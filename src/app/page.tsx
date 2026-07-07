@@ -7,20 +7,17 @@ import {
   Mail,
   MapPin,
   ArrowDown,
-  Sparkles,
+  ArrowUpRight,
   GraduationCap,
   BookOpen,
   Calculator,
   Atom,
   FlaskConical,
   Dna,
-  Award,
   Trophy,
-  Star,
   Menu,
   X,
-  ExternalLink,
-  Download,
+  ArrowRight,
 } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import ProfileCard from '@/components/profile-card/ProfileCard';
@@ -37,12 +34,13 @@ const Lanyard = dynamic(() => import('@/components/lanyard/Lanyard'), {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        color: 'rgba(255,255,255,0.4)',
-        fontSize: '0.85rem',
-        letterSpacing: '0.2em',
+        color: 'rgba(245,245,240,0.4)',
+        fontFamily: 'var(--font-mono, monospace)',
+        fontSize: '0.7rem',
+        letterSpacing: '0.3em',
       }}
     >
-      LOADING 3D CARD...
+      LOADING
     </div>
   ),
 });
@@ -117,21 +115,21 @@ const RESUME = {
 };
 
 const NAV_ITEMS = [
-  { id: 'hero', label: 'Home' },
-  { id: 'card', label: 'ID Card' },
-  { id: 'about', label: 'About' },
-  { id: 'experience', label: 'Experience' },
-  { id: 'subjects', label: 'Subjects' },
-  { id: 'education', label: 'Education' },
-  { id: 'achievements', label: 'Achievements' },
-  { id: 'contact', label: 'Contact' },
+  { id: 'hero', label: 'Index', num: '00' },
+  { id: 'card', label: 'ID Card', num: '01' },
+  { id: 'about', label: 'About', num: '02' },
+  { id: 'experience', label: 'Experience', num: '03' },
+  { id: 'subjects', label: 'Subjects', num: '04' },
+  { id: 'education', label: 'Education', num: '05' },
+  { id: 'achievements', label: 'Honors', num: '06' },
+  { id: 'contact', label: 'Contact', num: '07' },
 ];
 
 const SUBJECT_ICONS: Record<string, React.ReactNode> = {
-  calculator: <Calculator size={28} />,
-  atom: <Atom size={28} />,
-  flask: <FlaskConical size={28} />,
-  dna: <Dna size={28} />,
+  calculator: <Calculator size={22} strokeWidth={1.4} />,
+  atom: <Atom size={22} strokeWidth={1.4} />,
+  flask: <FlaskConical size={22} strokeWidth={1.4} />,
+  dna: <Dna size={22} strokeWidth={1.4} />,
 };
 
 // ===== Hook: reveal on scroll =====
@@ -218,7 +216,7 @@ function CursorGlow() {
   return <div ref={ref} className="pf-cursor-glow" />;
 }
 
-// ===== Component: Background grid + orbs =====
+// ===== Component: Background =====
 function BackgroundDecor() {
   return (
     <>
@@ -234,11 +232,22 @@ function BackgroundDecor() {
       <div
         className="pf-orb"
         style={{
-          width: 500,
-          height: 500,
-          background: '#6ee7ff',
-          top: '-10%',
+          width: 600,
+          height: 600,
+          background: '#C9A961',
+          top: '-15%',
           left: '-10%',
+        }}
+      />
+      <div
+        className="pf-orb"
+        style={{
+          width: 450,
+          height: 450,
+          background: '#8B7355',
+          top: '45%',
+          right: '-8%',
+          animationDelay: '-4s',
         }}
       />
       <div
@@ -246,28 +255,17 @@ function BackgroundDecor() {
         style={{
           width: 400,
           height: 400,
-          background: '#b794ff',
-          top: '40%',
-          right: '-5%',
-          animationDelay: '-3s',
-        }}
-      />
-      <div
-        className="pf-orb"
-        style={{
-          width: 350,
-          height: 350,
-          background: '#ff7ac6',
+          background: '#C9A961',
           bottom: '-5%',
-          left: '20%',
-          animationDelay: '-6s',
+          left: '25%',
+          animationDelay: '-8s',
         }}
       />
     </>
   );
 }
 
-// ===== Component: Navigation =====
+// ===== Component: Nav =====
 function Nav() {
   const active = useActiveSection();
   const [open, setOpen] = useState(false);
@@ -292,52 +290,58 @@ function Nav() {
         left: 0,
         right: 0,
         zIndex: 50,
-        transition: 'all 0.3s ease',
-        background: scrolled ? 'rgba(0,0,0,0.6)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(12px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(255,255,255,0.06)' : '1px solid transparent',
+        transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+        background: scrolled ? 'rgba(8,8,10,0.7)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(20px)' : 'none',
+        WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'none',
+        borderBottom: scrolled
+          ? '1px solid rgba(245,245,240,0.06)'
+          : '1px solid transparent',
       }}
     >
       <div
         style={{
-          maxWidth: '1280px',
+          maxWidth: '1320px',
           margin: '0 auto',
-          padding: '1rem 1.5rem',
+          padding: '1.25rem 2rem',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
         }}
       >
+        {/* Brand */}
         <button
           onClick={() => scrollTo('hero')}
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '0.5rem',
+            gap: '0.85rem',
             cursor: 'pointer',
             background: 'transparent',
             border: 'none',
-            color: '#fff',
+            color: 'inherit',
           }}
         >
-          <div
+          <span
+            className="pf-mono"
             style={{
-              width: 36,
-              height: 36,
-              borderRadius: 10,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              background: 'linear-gradient(135deg, #6ee7ff, #b794ff)',
-              color: '#000',
-              fontWeight: 800,
-              fontSize: '0.95rem',
-              letterSpacing: '-0.02em',
+              fontSize: '0.7rem',
+              letterSpacing: '0.25em',
+              color: 'var(--pf-accent)',
+              textTransform: 'uppercase',
             }}
           >
             YK
-          </div>
-          <span style={{ fontWeight: 600, fontSize: '0.95rem' }}>
+          </span>
+          <span
+            style={{
+              fontFamily: 'var(--pf-font-display)',
+              fontWeight: 500,
+              fontSize: '1.05rem',
+              letterSpacing: '-0.01em',
+              color: 'var(--pf-fg)',
+            }}
+          >
             Yashkumar Kolekar
           </span>
         </button>
@@ -345,9 +349,9 @@ function Nav() {
         {/* Desktop nav */}
         <div
           className="hidden md:flex"
-          style={{ gap: '1.75rem', alignItems: 'center' }}
+          style={{ gap: '2.25rem', alignItems: 'center' }}
         >
-          {NAV_ITEMS.map((item) => (
+          {NAV_ITEMS.slice(1).map((item) => (
             <button
               key={item.id}
               onClick={() => scrollTo(item.id)}
@@ -359,21 +363,31 @@ function Nav() {
           ))}
         </div>
 
+        {/* CTA */}
+        <button
+          onClick={() => scrollTo('contact')}
+          className="hidden md:inline-flex pf-btn pf-btn-ghost"
+          style={{ padding: '0.55rem 1.1rem', fontSize: '0.8rem' }}
+        >
+          Get in touch
+          <ArrowUpRight size={14} strokeWidth={1.5} />
+        </button>
+
         {/* Mobile menu button */}
         <button
           onClick={() => setOpen((o) => !o)}
           className="md:hidden"
           style={{
-            background: 'rgba(255,255,255,0.05)',
-            border: '1px solid rgba(255,255,255,0.1)',
-            borderRadius: 10,
+            background: 'transparent',
+            border: '1px solid var(--pf-border)',
+            borderRadius: 4,
             padding: '0.5rem',
-            color: '#fff',
+            color: 'var(--pf-fg)',
             cursor: 'pointer',
           }}
           aria-label="Toggle menu"
         >
-          {open ? <X size={20} /> : <Menu size={20} />}
+          {open ? <X size={18} strokeWidth={1.5} /> : <Menu size={18} strokeWidth={1.5} />}
         </button>
       </div>
 
@@ -384,39 +398,53 @@ function Nav() {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25 }}
+            transition={{ duration: 0.3 }}
             style={{
               overflow: 'hidden',
-              background: 'rgba(0,0,0,0.85)',
-              backdropFilter: 'blur(16px)',
-              borderBottom: '1px solid rgba(255,255,255,0.06)',
+              background: 'rgba(8,8,10,0.95)',
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
+              borderBottom: '1px solid var(--pf-border)',
             }}
           >
             <div
               style={{
-                padding: '1rem 1.5rem 1.5rem',
+                padding: '1rem 2rem 1.5rem',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '0.25rem',
+                gap: 0,
               }}
             >
-              {NAV_ITEMS.map((item) => (
+              {NAV_ITEMS.slice(1).map((item, i) => (
                 <button
                   key={item.id}
                   onClick={() => scrollTo(item.id)}
                   style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
                     textAlign: 'left',
-                    padding: '0.75rem 0',
+                    padding: '0.9rem 0',
                     background: 'transparent',
                     border: 'none',
-                    color: active === item.id ? '#6ee7ff' : 'rgba(255,255,255,0.7)',
-                    fontSize: '1rem',
+                    borderBottom:
+                      i < NAV_ITEMS.length - 2
+                        ? '1px solid var(--pf-border)'
+                        : 'none',
+                    color:
+                      active === item.id
+                        ? 'var(--pf-accent)'
+                        : 'var(--pf-fg-muted)',
+                    fontFamily: 'var(--pf-font-display)',
+                    fontSize: '1.15rem',
                     fontWeight: 500,
                     cursor: 'pointer',
-                    borderBottom: '1px solid rgba(255,255,255,0.04)',
                   }}
                 >
                   {item.label}
+                  <span className="pf-mono" style={{ fontSize: '0.65rem', opacity: 0.5 }}>
+                    {item.num}
+                  </span>
                 </button>
               ))}
             </div>
@@ -427,7 +455,7 @@ function Nav() {
   );
 }
 
-// ===== Section: Hero =====
+// ===== Hero =====
 function HeroSection() {
   return (
     <section
@@ -437,141 +465,205 @@ function HeroSection() {
         minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
-        padding: '6rem 1.5rem 4rem',
+        padding: '8rem 2rem 4rem',
         zIndex: 2,
       }}
     >
       <div
         style={{
-          maxWidth: '1280px',
+          maxWidth: '1320px',
           margin: '0 auto',
           width: '100%',
           display: 'grid',
-          gridTemplateColumns: 'minmax(0, 1.2fr) minmax(0, 0.8fr)',
-          gap: '3rem',
+          gridTemplateColumns: 'minmax(0, 1.3fr) minmax(0, 0.7fr)',
+          gap: '4rem',
           alignItems: 'center',
         }}
         className="hero-grid"
       >
-        {/* Left: text */}
+        {/* Left */}
         <div>
+          {/* Eyebrow */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             style={{
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '0.5rem',
-              padding: '0.4rem 0.9rem',
-              borderRadius: 999,
-              background: 'rgba(110, 231, 255, 0.08)',
-              border: '1px solid rgba(110, 231, 255, 0.2)',
-              marginBottom: '1.5rem',
-              fontSize: '0.8rem',
-              fontWeight: 500,
-              color: '#6ee7ff',
+              gap: '0.75rem',
+              marginBottom: '2rem',
             }}
           >
             <span className="pf-pulse-dot" />
-            Available for new students
+            <span
+              className="pf-mono"
+              style={{
+                fontSize: '0.7rem',
+                letterSpacing: '0.3em',
+                textTransform: 'uppercase',
+                color: 'var(--pf-fg-muted)',
+              }}
+            >
+              Available for new students — 2026
+            </span>
           </motion.div>
 
+          {/* Name — editorial serif */}
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
+            transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="pf-display pf-glow-text"
             style={{
-              fontSize: 'clamp(2.5rem, 7vw, 5.5rem)',
-              fontWeight: 800,
-              letterSpacing: '-0.04em',
-              lineHeight: 0.95,
+              fontSize: 'clamp(3rem, 8vw, 6.5rem)',
+              fontWeight: 500,
+              letterSpacing: '-0.035em',
+              lineHeight: 0.96,
               margin: 0,
+              color: 'var(--pf-fg)',
             }}
           >
-            <span className="pf-gradient-text pf-glow-text">Yashkumar</span>
+            Yashkumar
             <br />
-            <span style={{ color: '#fff' }}>U Kolekar</span>
+            <span style={{ fontStyle: 'italic', fontWeight: 400 }}>
+              U <span className="pf-gradient-text">Kolekar</span>
+            </span>
           </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            style={{
-              fontSize: 'clamp(1rem, 2vw, 1.4rem)',
-              color: 'rgba(255,255,255,0.65)',
-              marginTop: '1.5rem',
-              maxWidth: '540px',
-              lineHeight: 1.5,
-            }}
-          >
-            Tutor · B.E. Robotics & AI Student — simplifying complex concepts and
-            helping school students score above 90% since 3 years.
-          </motion.p>
-
+          {/* Title row */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '1.25rem',
+              marginTop: '2rem',
+              flexWrap: 'wrap',
+            }}
+          >
+            <span
+              className="pf-mono"
+              style={{
+                fontSize: '0.78rem',
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase',
+                color: 'var(--pf-accent)',
+              }}
+            >
+              Tutor
+            </span>
+            <span style={{ width: 24, height: 1, background: 'var(--pf-border-strong)' }} />
+            <span
+              className="pf-mono"
+              style={{
+                fontSize: '0.78rem',
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase',
+                color: 'var(--pf-fg-muted)',
+              }}
+            >
+              B.E. Robotics &amp; AI
+            </span>
+            <span style={{ width: 24, height: 1, background: 'var(--pf-border-strong)' }} />
+            <span
+              className="pf-mono"
+              style={{
+                fontSize: '0.78rem',
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase',
+                color: 'var(--pf-fg-muted)',
+              }}
+            >
+              Bengaluru
+            </span>
+          </motion.div>
+
+          {/* Tagline */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
+            style={{
+              fontFamily: 'var(--pf-font-display)',
+              fontSize: 'clamp(1.15rem, 1.8vw, 1.5rem)',
+              fontStyle: 'italic',
+              fontWeight: 400,
+              color: 'var(--pf-fg-muted)',
+              marginTop: '2.25rem',
+              maxWidth: '540px',
+              lineHeight: 1.5,
+              letterSpacing: '-0.01em',
+            }}
+          >
+            Simplifying complex concepts, building student confidence —
+            helping school students score above 90% for three years.
+          </motion.p>
+
+          {/* CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
             style={{
               display: 'flex',
               gap: '1rem',
-              marginTop: '2rem',
+              marginTop: '2.5rem',
               flexWrap: 'wrap',
             }}
           >
             <button
               className="pf-btn pf-btn-primary"
               onClick={() =>
-                document
-                  .getElementById('contact')
-                  ?.scrollIntoView({ behavior: 'smooth' })
+                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
               }
             >
-              Get in touch
+              Book a session
+              <ArrowRight size={15} strokeWidth={1.5} />
             </button>
             <button
               className="pf-btn pf-btn-ghost"
               onClick={() =>
-                document
-                  .getElementById('experience')
-                  ?.scrollIntoView({ behavior: 'smooth' })
+                document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })
               }
             >
               View experience
             </button>
           </motion.div>
 
+          {/* Stats row */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
+            transition={{ duration: 1, delay: 0.85 }}
             style={{
               display: 'flex',
-              gap: '2rem',
-              marginTop: '3rem',
-              flexWrap: 'wrap',
+              gap: 0,
+              marginTop: '4rem',
+              borderTop: '1px solid var(--pf-border)',
+              paddingTop: '2rem',
             }}
           >
             {[
               { value: '3+', label: 'Years tutoring' },
-              { value: '90%+', label: 'Student scores' },
-              { value: '4', label: 'Subjects taught' },
+              { value: '90%', label: 'Avg. scores' },
+              { value: '4', label: 'Subjects' },
               { value: '9.2', label: 'CGPA / 10' },
-            ].map((stat) => (
-              <div key={stat.label}>
+            ].map((stat, i) => (
+              <div
+                key={stat.label}
+                style={{
+                  flex: 1,
+                  paddingLeft: i === 0 ? 0 : '1.5rem',
+                  paddingRight: i === 3 ? 0 : '1.5rem',
+                  borderRight:
+                    i < 3 ? '1px solid var(--pf-border)' : 'none',
+                }}
+              >
                 <div className="pf-stat-number">{stat.value}</div>
-                <div
-                  style={{
-                    fontSize: '0.75rem',
-                    color: 'rgba(255,255,255,0.5)',
-                    marginTop: '0.25rem',
-                    letterSpacing: '0.05em',
-                  }}
-                >
-                  {stat.label}
-                </div>
+                <div className="pf-stat-label">{stat.label}</div>
               </div>
             ))}
           </motion.div>
@@ -579,9 +671,9 @@ function HeroSection() {
 
         {/* Right: ProfileCard */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.92 }}
+          initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.9, delay: 0.4 }}
+          transition={{ duration: 1.1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
           style={{
             display: 'flex',
             justifyContent: 'center',
@@ -593,21 +685,19 @@ function HeroSection() {
             title="Tutor · Robotics & AI"
             handle="yashkumar.kolekar"
             status="Available for Tutoring"
-            contactText="Contact Me"
+            contactText="Contact"
             avatarUrl="/assets/avatar.png"
             miniAvatarUrl="/assets/avatar.png"
             showUserInfo
             enableTilt
             enableMobileTilt
             onContactClick={() =>
-              document
-                .getElementById('contact')
-                ?.scrollIntoView({ behavior: 'smooth' })
+              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
             }
             behindGlowEnabled
-            behindGlowColor="rgba(110, 231, 255, 0.18)"
-            behindGlowSize="30%"
-            innerGradient="linear-gradient(145deg, rgba(110,231,255,0.06) 0%, rgba(183,148,255,0.08) 100%)"
+            behindGlowColor="rgba(201, 169, 97, 0.22)"
+            behindGlowSize="35%"
+            innerGradient="linear-gradient(145deg, rgba(201,169,97,0.08) 0%, rgba(139,115,85,0.10) 100%)"
           />
         </motion.div>
       </div>
@@ -625,19 +715,28 @@ function HeroSection() {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          gap: '0.5rem',
-          color: 'rgba(255,255,255,0.4)',
-          fontSize: '0.7rem',
-          letterSpacing: '0.25em',
-          textTransform: 'uppercase',
+          gap: '0.85rem',
         }}
       >
-        <span>Scroll</span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.8, repeat: Infinity }}
+        <span
+          className="pf-mono"
+          style={{
+            fontSize: '0.6rem',
+            letterSpacing: '0.35em',
+            textTransform: 'uppercase',
+            color: 'var(--pf-fg-dim)',
+            writingMode: 'vertical-rl',
+            transform: 'rotate(180deg)',
+          }}
         >
-          <ArrowDown size={16} />
+          Scroll
+        </span>
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          style={{ color: 'var(--pf-fg-dim)' }}
+        >
+          <ArrowDown size={14} strokeWidth={1.5} />
         </motion.div>
       </motion.div>
 
@@ -645,7 +744,7 @@ function HeroSection() {
         @media (max-width: 900px) {
           .hero-grid {
             grid-template-columns: 1fr !important;
-            gap: 2rem !important;
+            gap: 2.5rem !important;
           }
         }
       `}</style>
@@ -653,7 +752,7 @@ function HeroSection() {
   );
 }
 
-// ===== Section: Lanyard 3D card =====
+// ===== Card section =====
 function CardSection() {
   return (
     <section
@@ -668,24 +767,31 @@ function CardSection() {
       <div
         style={{
           position: 'absolute',
-          top: '2rem',
+          top: '3rem',
           left: '50%',
           transform: 'translateX(-50%)',
           textAlign: 'center',
           zIndex: 3,
-          padding: '0 1.5rem',
+          padding: '0 2rem',
+          width: '100%',
+          maxWidth: '640px',
         }}
       >
-        <div className="pf-section-eyebrow">Interactive · 3D</div>
-        <h2 className="pf-section-title" style={{ color: '#fff' }}>
+        <div className="pf-section-eyebrow" style={{ justifyContent: 'center' }}>
+          Interactive · 3D
+        </div>
+        <h2 className="pf-section-title">
           Drag my <span className="pf-gradient-text">ID card</span>
         </h2>
         <p
           style={{
-            color: 'rgba(255,255,255,0.55)',
-            marginTop: '0.75rem',
-            maxWidth: '500px',
-            margin: '0.75rem auto 0',
+            color: 'var(--pf-fg-muted)',
+            marginTop: '1rem',
+            maxWidth: '440px',
+            margin: '1rem auto 0',
+            fontFamily: 'var(--pf-font-display)',
+            fontStyle: 'italic',
+            fontSize: '1.05rem',
           }}
         >
           A real physics simulation — grab the card, swing it, and let it settle.
@@ -704,71 +810,70 @@ function CardSection() {
       />
 
       <div className="pf-lanyard-hint">
-        <Sparkles size={14} />
-        <span>Click & drag</span>
+        <span>Click &amp; drag</span>
       </div>
     </section>
   );
 }
 
-// ===== Section: About / Objective =====
+// ===== About =====
 function AboutSection() {
   const ref = useReveal<HTMLDivElement>();
   return (
     <section
       id="about"
-      style={{
-        position: 'relative',
-        padding: '6rem 1.5rem',
-        zIndex: 2,
-      }}
+      style={{ position: 'relative', padding: '7rem 2rem', zIndex: 2 }}
     >
-      <div
-        ref={ref}
-        className="pf-reveal"
-        style={{ maxWidth: '900px', margin: '0 auto' }}
-      >
+      <div ref={ref} className="pf-reveal" style={{ maxWidth: '960px', margin: '0 auto' }}>
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: '2rem', marginBottom: '3rem' }}>
+          <span className="pf-mono" style={{ fontSize: '0.7rem', color: 'var(--pf-fg-dim)', letterSpacing: '0.3em' }}>
+            02 — ABOUT
+          </span>
+          <span style={{ flex: 1, height: 1, background: 'var(--pf-border)' }} />
+        </div>
+
         <div className="pf-section-eyebrow">Career Objective</div>
-        <h2 className="pf-section-title" style={{ color: '#fff', marginBottom: '2rem' }}>
+        <h2 className="pf-section-title" style={{ marginBottom: '2.5rem' }}>
           About <span className="pf-gradient-text">me</span>
         </h2>
+
         <div
-          className="pf-glass pf-glow-border"
+          className="pf-glass"
           style={{
-            padding: '2.5rem',
-            borderRadius: 24,
+            padding: '3rem',
+            borderRadius: 6,
             position: 'relative',
           }}
         >
+          {/* Decorative quote mark */}
           <div
             style={{
               position: 'absolute',
-              top: '-12px',
-              left: '2.5rem',
+              top: '1.5rem',
+              left: '2rem',
+              fontFamily: 'var(--pf-font-display)',
+              fontSize: '5rem',
+              lineHeight: 1,
+              color: 'var(--pf-accent)',
+              opacity: 0.3,
+              fontStyle: 'italic',
             }}
           >
-            <div
-              style={{
-                width: 48,
-                height: 48,
-                borderRadius: 14,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                background: 'linear-gradient(135deg, #6ee7ff, #b794ff)',
-                color: '#000',
-              }}
-            >
-              <BookOpen size={22} />
-            </div>
+            &ldquo;
           </div>
+
           <p
             style={{
-              fontSize: 'clamp(1.05rem, 2vw, 1.35rem)',
-              lineHeight: 1.7,
-              color: 'rgba(255,255,255,0.85)',
+              fontFamily: 'var(--pf-font-display)',
+              fontSize: 'clamp(1.15rem, 1.8vw, 1.5rem)',
+              lineHeight: 1.65,
+              color: 'var(--pf-fg)',
               margin: 0,
               fontWeight: 400,
+              fontStyle: 'italic',
+              letterSpacing: '-0.01em',
+              position: 'relative',
+              zIndex: 1,
             }}
           >
             {RESUME.objective}
@@ -779,31 +884,34 @@ function AboutSection() {
   );
 }
 
-// ===== Section: Experience =====
+// ===== Experience =====
 function ExperienceSection() {
   const ref = useReveal<HTMLDivElement>();
   return (
     <section
       id="experience"
-      style={{
-        position: 'relative',
-        padding: '6rem 1.5rem',
-        zIndex: 2,
-      }}
+      style={{ position: 'relative', padding: '7rem 2rem', zIndex: 2 }}
     >
       <div ref={ref} className="pf-reveal" style={{ maxWidth: '1100px', margin: '0 auto' }}>
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: '2rem', marginBottom: '3rem' }}>
+          <span className="pf-mono" style={{ fontSize: '0.7rem', color: 'var(--pf-fg-dim)', letterSpacing: '0.3em' }}>
+            03 — EXPERIENCE
+          </span>
+          <span style={{ flex: 1, height: 1, background: 'var(--pf-border)' }} />
+        </div>
+
         <div className="pf-section-eyebrow">Tutoring Experience</div>
-        <h2 className="pf-section-title" style={{ color: '#fff', marginBottom: '3rem' }}>
-          3 years of <span className="pf-gradient-text">teaching</span>
+        <h2 className="pf-section-title" style={{ marginBottom: '3rem' }}>
+          Three years of <span className="pf-gradient-text">teaching</span>
         </h2>
 
         {RESUME.experience.map((exp, i) => (
           <div
             key={i}
-            className="pf-glass pf-glow-border"
+            className="pf-glass"
             style={{
-              borderRadius: 24,
-              padding: '2rem',
+              borderRadius: 6,
+              padding: '2.5rem',
               marginBottom: '1.5rem',
             }}
           >
@@ -811,71 +919,54 @@ function ExperienceSection() {
               style={{
                 display: 'flex',
                 flexWrap: 'wrap',
-                gap: '0.5rem 1rem',
+                gap: '0.75rem 1.5rem',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                marginBottom: '1.5rem',
+                marginBottom: '2rem',
+                paddingBottom: '1.5rem',
+                borderBottom: '1px solid var(--pf-border)',
               }}
             >
               <h3
+                className="pf-display"
                 style={{
-                  fontSize: '1.25rem',
-                  fontWeight: 700,
-                  color: '#fff',
+                  fontSize: '1.4rem',
+                  fontWeight: 500,
+                  color: 'var(--pf-fg)',
                   margin: 0,
+                  letterSpacing: '-0.015em',
                 }}
               >
                 {exp.title}
               </h3>
               <span
+                className="pf-mono"
                 style={{
-                  padding: '0.3rem 0.85rem',
-                  borderRadius: 999,
-                  background: 'rgba(110, 231, 255, 0.1)',
-                  border: '1px solid rgba(110, 231, 255, 0.25)',
-                  color: '#6ee7ff',
-                  fontSize: '0.8rem',
-                  fontWeight: 600,
+                  padding: '0.4rem 0.85rem',
+                  background: 'var(--pf-accent-soft)',
+                  border: '1px solid var(--pf-accent-line)',
+                  color: 'var(--pf-accent)',
+                  fontSize: '0.7rem',
+                  letterSpacing: '0.15em',
+                  textTransform: 'uppercase',
+                  borderRadius: 2,
                 }}
               >
                 {exp.duration}
               </span>
             </div>
-            <div className="pf-stagger" style={{ display: 'grid', gap: '1rem' }}>
+
+            <div className="pf-stagger" style={{ display: 'grid', gap: '1.25rem' }}>
               {exp.points.map((point, j) => (
-                <div
-                  key={j}
-                  style={{
-                    display: 'flex',
-                    gap: '1rem',
-                    alignItems: 'flex-start',
-                  }}
-                >
-                  <div
-                    style={{
-                      width: 28,
-                      height: 28,
-                      borderRadius: 8,
-                      flexShrink: 0,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      background: 'linear-gradient(135deg, rgba(110,231,255,0.2), rgba(183,148,255,0.2))',
-                      border: '1px solid rgba(110,231,255,0.3)',
-                      color: '#6ee7ff',
-                      fontSize: '0.8rem',
-                      fontWeight: 700,
-                      marginTop: 2,
-                    }}
-                  >
-                    {j + 1}
-                  </div>
+                <div key={j} style={{ display: 'flex', gap: '1.25rem', alignItems: 'flex-start' }}>
+                  <div className="pf-marker">{String(j + 1).padStart(2, '0')}</div>
                   <p
                     style={{
                       margin: 0,
-                      color: 'rgba(255,255,255,0.75)',
-                      lineHeight: 1.65,
+                      color: 'var(--pf-fg-muted)',
+                      lineHeight: 1.7,
                       fontSize: '0.95rem',
+                      flex: 1,
                     }}
                   >
                     {point}
@@ -890,62 +981,82 @@ function ExperienceSection() {
   );
 }
 
-// ===== Section: Subjects =====
+// ===== Subjects =====
 function SubjectsSection() {
   const ref = useReveal<HTMLDivElement>();
   return (
     <section
       id="subjects"
-      style={{
-        position: 'relative',
-        padding: '6rem 1.5rem',
-        zIndex: 2,
-      }}
+      style={{ position: 'relative', padding: '7rem 2rem', zIndex: 2 }}
     >
       <div ref={ref} className="pf-reveal" style={{ maxWidth: '1100px', margin: '0 auto' }}>
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: '2rem', marginBottom: '3rem' }}>
+          <span className="pf-mono" style={{ fontSize: '0.7rem', color: 'var(--pf-fg-dim)', letterSpacing: '0.3em' }}>
+            04 — SUBJECTS
+          </span>
+          <span style={{ flex: 1, height: 1, background: 'var(--pf-border)' }} />
+        </div>
+
         <div className="pf-section-eyebrow">Subjects Taught</div>
-        <h2 className="pf-section-title" style={{ color: '#fff', marginBottom: '3rem' }}>
-          Grades <span className="pf-gradient-text">6–10</span>
+        <h2 className="pf-section-title" style={{ marginBottom: '3rem' }}>
+          Grades <span className="pf-gradient-text">6 — 10</span>
         </h2>
 
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
             gap: '1.25rem',
           }}
         >
-          {RESUME.subjects.map((subject) => (
+          {RESUME.subjects.map((subject, i) => (
             <div
               key={subject.name}
-              className="pf-glass pf-glow-border"
+              className="pf-glass"
               style={{
-                padding: '1.75rem',
-                borderRadius: 20,
+                padding: '2rem',
+                borderRadius: 6,
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '1rem',
+                gap: '1.5rem',
+                position: 'relative',
               }}
             >
-              <div className="pf-subject-icon">
-                {SUBJECT_ICONS[subject.icon]}
-              </div>
+              <span
+                className="pf-mono"
+                style={{
+                  position: 'absolute',
+                  top: '1.25rem',
+                  right: '1.25rem',
+                  fontSize: '0.65rem',
+                  color: 'var(--pf-fg-dim)',
+                  letterSpacing: '0.2em',
+                }}
+              >
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <div className="pf-subject-icon">{SUBJECT_ICONS[subject.icon]}</div>
               <div>
                 <h3
+                  className="pf-display"
                   style={{
-                    fontSize: '1.25rem',
-                    fontWeight: 700,
-                    color: '#fff',
+                    fontSize: '1.5rem',
+                    fontWeight: 500,
+                    color: 'var(--pf-fg)',
                     margin: 0,
+                    letterSpacing: '-0.02em',
                   }}
                 >
                   {subject.name}
                 </h3>
                 <p
+                  className="pf-mono"
                   style={{
-                    fontSize: '0.85rem',
-                    color: 'rgba(255,255,255,0.5)',
-                    margin: '0.25rem 0 0',
+                    fontSize: '0.7rem',
+                    color: 'var(--pf-fg-dim)',
+                    margin: '0.5rem 0 0',
+                    letterSpacing: '0.2em',
+                    textTransform: 'uppercase',
                   }}
                 >
                   Grades {subject.grades}
@@ -959,60 +1070,65 @@ function SubjectsSection() {
   );
 }
 
-// ===== Section: Education =====
+// ===== Education =====
 function EducationSection() {
   const ref = useReveal<HTMLDivElement>();
   return (
     <section
       id="education"
-      style={{
-        position: 'relative',
-        padding: '6rem 1.5rem',
-        zIndex: 2,
-      }}
+      style={{ position: 'relative', padding: '7rem 2rem', zIndex: 2 }}
     >
       <div ref={ref} className="pf-reveal" style={{ maxWidth: '1100px', margin: '0 auto' }}>
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: '2rem', marginBottom: '3rem' }}>
+          <span className="pf-mono" style={{ fontSize: '0.7rem', color: 'var(--pf-fg-dim)', letterSpacing: '0.3em' }}>
+            05 — EDUCATION
+          </span>
+          <span style={{ flex: 1, height: 1, background: 'var(--pf-border)' }} />
+        </div>
+
         <div className="pf-section-eyebrow">Educational Qualifications</div>
-        <h2 className="pf-section-title" style={{ color: '#fff', marginBottom: '3rem' }}>
+        <h2 className="pf-section-title" style={{ marginBottom: '3rem' }}>
           Academic <span className="pf-gradient-text">journey</span>
         </h2>
 
-        <div style={{ display: 'grid', gap: '1.25rem' }}>
+        <div style={{ display: 'grid', gap: '1rem' }}>
           {RESUME.education.map((edu, i) => (
             <div
               key={i}
-              className="pf-glass pf-glow-border"
+              className="pf-glass"
               style={{
-                borderRadius: 20,
-                padding: '1.75rem',
+                borderRadius: 6,
+                padding: '2rem 2.25rem',
                 display: 'grid',
                 gridTemplateColumns: 'auto 1fr auto',
-                gap: '1.5rem',
+                gap: '2rem',
                 alignItems: 'center',
               }}
             >
               <div
                 style={{
-                  width: 56,
-                  height: 56,
-                  borderRadius: 14,
+                  width: 48,
+                  height: 48,
+                  borderRadius: 8,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  background: 'linear-gradient(135deg, rgba(110,231,255,0.18), rgba(183,148,255,0.18))',
-                  border: '1px solid rgba(110,231,255,0.25)',
-                  color: '#6ee7ff',
+                  background: 'var(--pf-card)',
+                  border: '1px solid var(--pf-border)',
+                  color: 'var(--pf-accent)',
                 }}
               >
-                <GraduationCap size={26} />
+                <GraduationCap size={22} strokeWidth={1.4} />
               </div>
               <div>
                 <h3
+                  className="pf-display"
                   style={{
-                    fontSize: '1.15rem',
-                    fontWeight: 700,
-                    color: '#fff',
+                    fontSize: '1.25rem',
+                    fontWeight: 500,
+                    color: 'var(--pf-fg)',
                     margin: 0,
+                    letterSpacing: '-0.015em',
                   }}
                 >
                   {edu.course}
@@ -1020,8 +1136,8 @@ function EducationSection() {
                 <p
                   style={{
                     fontSize: '0.9rem',
-                    color: 'rgba(255,255,255,0.6)',
-                    margin: '0.35rem 0 0',
+                    color: 'var(--pf-fg-muted)',
+                    margin: '0.4rem 0 0',
                   }}
                 >
                   {edu.institution}
@@ -1029,19 +1145,24 @@ function EducationSection() {
               </div>
               <div style={{ textAlign: 'right' }}>
                 <div
+                  className="pf-display"
                   style={{
-                    fontSize: '1.05rem',
-                    fontWeight: 700,
-                    color: '#6ee7ff',
+                    fontSize: '1.4rem',
+                    fontWeight: 500,
+                    color: 'var(--pf-accent)',
+                    letterSpacing: '-0.02em',
                   }}
                 >
                   {edu.aggregate}
                 </div>
                 <div
+                  className="pf-mono"
                   style={{
-                    fontSize: '0.8rem',
-                    color: 'rgba(255,255,255,0.5)',
-                    marginTop: '0.25rem',
+                    fontSize: '0.65rem',
+                    color: 'var(--pf-fg-dim)',
+                    marginTop: '0.35rem',
+                    letterSpacing: '0.2em',
+                    textTransform: 'uppercase',
                   }}
                 >
                   {edu.year}
@@ -1052,29 +1173,30 @@ function EducationSection() {
         </div>
 
         {/* Core competencies */}
-        <div style={{ marginTop: '4rem' }}>
+        <div style={{ marginTop: '5rem' }}>
           <div className="pf-section-eyebrow">Core Competencies</div>
           <h3
+            className="pf-display"
             style={{
-              fontSize: 'clamp(1.5rem, 3vw, 2rem)',
-              fontWeight: 700,
-              color: '#fff',
+              fontSize: 'clamp(1.5rem, 3vw, 2.25rem)',
+              fontWeight: 500,
+              color: 'var(--pf-fg)',
               margin: 0,
+              letterSpacing: '-0.02em',
             }}
           >
-            Skills & <span className="pf-gradient-text">tools</span>
+            Skills &amp; <span className="pf-gradient-text">tools</span>
           </h3>
           <div
             style={{
               display: 'flex',
               flexWrap: 'wrap',
               gap: '0.75rem',
-              marginTop: '1.75rem',
+              marginTop: '2rem',
             }}
           >
             {RESUME.competencies.map((skill) => (
               <span key={skill} className="pf-chip">
-                <Sparkles size={14} style={{ color: '#6ee7ff' }} />
                 {skill}
               </span>
             ))}
@@ -1085,54 +1207,71 @@ function EducationSection() {
   );
 }
 
-// ===== Section: Achievements =====
+// ===== Achievements =====
 function AchievementsSection() {
   const ref = useReveal<HTMLDivElement>();
   return (
     <section
       id="achievements"
-      style={{
-        position: 'relative',
-        padding: '6rem 1.5rem',
-        zIndex: 2,
-      }}
+      style={{ position: 'relative', padding: '7rem 2rem', zIndex: 2 }}
     >
       <div ref={ref} className="pf-reveal" style={{ maxWidth: '1100px', margin: '0 auto' }}>
-        <div className="pf-section-eyebrow">Achievements & Recognition</div>
-        <h2 className="pf-section-title" style={{ color: '#fff', marginBottom: '3rem' }}>
-          Awards & <span className="pf-gradient-text">honors</span>
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: '2rem', marginBottom: '3rem' }}>
+          <span className="pf-mono" style={{ fontSize: '0.7rem', color: 'var(--pf-fg-dim)', letterSpacing: '0.3em' }}>
+            06 — HONORS
+          </span>
+          <span style={{ flex: 1, height: 1, background: 'var(--pf-border)' }} />
+        </div>
+
+        <div className="pf-section-eyebrow">Achievements &amp; Recognition</div>
+        <h2 className="pf-section-title" style={{ marginBottom: '3rem' }}>
+          Awards &amp; <span className="pf-gradient-text">honors</span>
         </h2>
 
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
             gap: '1.25rem',
           }}
         >
           {RESUME.achievements.map((ach, i) => (
             <div
               key={i}
-              className="pf-glass pf-glow-border"
+              className="pf-glass"
               style={{
-                padding: '1.75rem',
-                borderRadius: 20,
+                padding: '2rem',
+                borderRadius: 6,
                 display: 'flex',
-                gap: '1.25rem',
+                gap: '1.5rem',
                 alignItems: 'flex-start',
               }}
             >
               <div className="pf-medal">
-                <Trophy size={22} />
+                <Trophy size={20} strokeWidth={1.4} />
               </div>
-              <div>
-                <h3
+              <div style={{ flex: 1 }}>
+                <span
+                  className="pf-mono"
                   style={{
-                    fontSize: '1.05rem',
-                    fontWeight: 700,
-                    color: '#fff',
+                    display: 'block',
+                    fontSize: '0.65rem',
+                    color: 'var(--pf-fg-dim)',
+                    letterSpacing: '0.25em',
+                    marginBottom: '0.5rem',
+                  }}
+                >
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <h3
+                  className="pf-display"
+                  style={{
+                    fontSize: '1.15rem',
+                    fontWeight: 500,
+                    color: 'var(--pf-fg)',
                     margin: 0,
                     lineHeight: 1.3,
+                    letterSpacing: '-0.015em',
                   }}
                 >
                   {ach.title}
@@ -1140,8 +1279,8 @@ function AchievementsSection() {
                 <p
                   style={{
                     fontSize: '0.85rem',
-                    color: 'rgba(255,255,255,0.55)',
-                    margin: '0.4rem 0 0',
+                    color: 'var(--pf-fg-muted)',
+                    margin: '0.5rem 0 0',
                   }}
                 >
                   {ach.subtitle}
@@ -1155,24 +1294,24 @@ function AchievementsSection() {
   );
 }
 
-// ===== Section: Contact =====
+// ===== Contact =====
 function ContactSection() {
   const ref = useReveal<HTMLDivElement>();
   const contacts = [
     {
-      icon: <Phone size={22} />,
+      icon: <Phone size={20} strokeWidth={1.4} />,
       label: 'Phone',
       value: RESUME.phone,
       href: `tel:+91${RESUME.phone}`,
     },
     {
-      icon: <Mail size={22} />,
+      icon: <Mail size={20} strokeWidth={1.4} />,
       label: 'Email',
       value: RESUME.email,
       href: `mailto:${RESUME.email}`,
     },
     {
-      icon: <MapPin size={22} />,
+      icon: <MapPin size={20} strokeWidth={1.4} />,
       label: 'Location',
       value: RESUME.location,
       href: `https://maps.google.com/?q=${encodeURIComponent(RESUME.location)}`,
@@ -1182,35 +1321,39 @@ function ContactSection() {
   return (
     <section
       id="contact"
-      style={{
-        position: 'relative',
-        padding: '6rem 1.5rem 4rem',
-        zIndex: 2,
-      }}
+      style={{ position: 'relative', padding: '7rem 2rem 4rem', zIndex: 2 }}
     >
       <div ref={ref} className="pf-reveal" style={{ maxWidth: '1100px', margin: '0 auto' }}>
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: '2rem', marginBottom: '3rem' }}>
+          <span className="pf-mono" style={{ fontSize: '0.7rem', color: 'var(--pf-fg-dim)', letterSpacing: '0.3em' }}>
+            07 — CONTACT
+          </span>
+          <span style={{ flex: 1, height: 1, background: 'var(--pf-border)' }} />
+        </div>
+
         <div className="pf-section-eyebrow">Get in touch</div>
-        <h2 className="pf-section-title" style={{ color: '#fff', marginBottom: '1rem' }}>
+        <h2 className="pf-section-title" style={{ marginBottom: '1.25rem' }}>
           Let&apos;s learn <span className="pf-gradient-text">together</span>
         </h2>
         <p
+          className="pf-display-italic"
           style={{
-            color: 'rgba(255,255,255,0.6)',
-            maxWidth: '540px',
-            fontSize: '1.05rem',
-            lineHeight: 1.6,
-            marginBottom: '3rem',
+            color: 'var(--pf-fg-muted)',
+            maxWidth: '560px',
+            fontSize: '1.25rem',
+            lineHeight: 1.55,
+            marginBottom: '3.5rem',
           }}
         >
-          Available for one-on-one tutoring (online & offline) and vacation
+          Available for one-on-one tutoring (online &amp; offline) and vacation
           classroom teaching. Reach out to discuss your learning goals.
         </p>
 
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-            gap: '1.25rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '1rem',
           }}
         >
           {contacts.map((c) => (
@@ -1219,10 +1362,10 @@ function ContactSection() {
               href={c.href}
               target={c.href.startsWith('http') ? '_blank' : undefined}
               rel="noopener noreferrer"
-              className="pf-glass pf-glow-border"
+              className="pf-glass"
               style={{
-                padding: '1.5rem',
-                borderRadius: 20,
+                padding: '1.75rem',
+                borderRadius: 6,
                 textDecoration: 'none',
                 color: 'inherit',
                 display: 'flex',
@@ -1232,46 +1375,48 @@ function ContactSection() {
             >
               <div
                 style={{
-                  width: 52,
-                  height: 52,
-                  borderRadius: 14,
+                  width: 44,
+                  height: 44,
+                  borderRadius: 8,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  background: 'linear-gradient(135deg, rgba(110,231,255,0.18), rgba(183,148,255,0.18))',
-                  border: '1px solid rgba(110,231,255,0.25)',
-                  color: '#6ee7ff',
+                  background: 'var(--pf-card)',
+                  border: '1px solid var(--pf-border)',
+                  color: 'var(--pf-accent)',
                   flexShrink: 0,
                 }}
               >
                 {c.icon}
               </div>
-              <div style={{ minWidth: 0 }}>
+              <div style={{ minWidth: 0, flex: 1 }}>
                 <div
+                  className="pf-mono"
                   style={{
-                    fontSize: '0.75rem',
-                    color: 'rgba(255,255,255,0.5)',
+                    fontSize: '0.65rem',
+                    color: 'var(--pf-fg-dim)',
                     textTransform: 'uppercase',
-                    letterSpacing: '0.1em',
+                    letterSpacing: '0.25em',
                   }}
                 >
                   {c.label}
                 </div>
                 <div
                   style={{
-                    fontSize: '1rem',
-                    fontWeight: 600,
-                    color: '#fff',
-                    marginTop: '0.25rem',
+                    fontSize: '0.95rem',
+                    fontWeight: 500,
+                    color: 'var(--pf-fg)',
+                    marginTop: '0.4rem',
                     wordBreak: 'break-word',
                   }}
                 >
                   {c.value}
                 </div>
               </div>
-              <ExternalLink
+              <ArrowUpRight
                 size={16}
-                style={{ color: 'rgba(255,255,255,0.3)', marginLeft: 'auto', flexShrink: 0 }}
+                strokeWidth={1.5}
+                style={{ color: 'var(--pf-fg-dim)', flexShrink: 0 }}
               />
             </a>
           ))}
@@ -1279,46 +1424,73 @@ function ContactSection() {
 
         {/* CTA banner */}
         <div
-          className="pf-glass pf-glow-border"
+          className="pf-glass"
           style={{
             marginTop: '3rem',
-            padding: '2.5rem',
-            borderRadius: 24,
+            padding: '3.5rem 2.5rem',
+            borderRadius: 6,
             textAlign: 'center',
             background:
-              'linear-gradient(135deg, rgba(110,231,255,0.06), rgba(183,148,255,0.06))',
+              'linear-gradient(135deg, rgba(201,169,97,0.04), rgba(139,115,85,0.05))',
+            position: 'relative',
+            overflow: 'hidden',
           }}
         >
-          <Star
-            size={32}
-            style={{ color: '#fbbf24', margin: '0 auto 1rem' }}
-            fill="#fbbf24"
-          />
-          <h3
+          <div
             style={{
-              fontSize: 'clamp(1.4rem, 3vw, 2rem)',
-              fontWeight: 700,
-              color: '#fff',
-              margin: 0,
+              position: 'absolute',
+              top: 0,
+              left: '50%',
+              transform: 'translateX(-50%)',
+              width: '60%',
+              height: 1,
+              background:
+                'linear-gradient(90deg, transparent, var(--pf-accent-line), transparent)',
+            }}
+          />
+          <span
+            className="pf-mono"
+            style={{
+              fontSize: '0.65rem',
+              letterSpacing: '0.3em',
+              textTransform: 'uppercase',
+              color: 'var(--pf-accent)',
+            }}
+          >
+            First consultation free
+          </span>
+          <h3
+            className="pf-display"
+            style={{
+              fontSize: 'clamp(1.6rem, 3.5vw, 2.5rem)',
+              fontWeight: 500,
+              color: 'var(--pf-fg)',
+              margin: '1rem 0 0.85rem',
+              letterSpacing: '-0.025em',
             }}
           >
             Ready to score above 90%?
           </h3>
           <p
             style={{
-              color: 'rgba(255,255,255,0.6)',
-              marginTop: '0.75rem',
-              marginBottom: '1.75rem',
+              color: 'var(--pf-fg-muted)',
+              marginBottom: '2rem',
               maxWidth: '460px',
               marginLeft: 'auto',
               marginRight: 'auto',
+              fontSize: '0.95rem',
             }}
           >
-            Book a session today — first consultation is always free.
+            Book a session today — personalized lesson plans, online or offline.
           </p>
-          <a href={`mailto:${RESUME.email}`} className="pf-btn pf-btn-primary" style={{ textDecoration: 'none' }}>
-            <Mail size={16} />
+          <a
+            href={`mailto:${RESUME.email}`}
+            className="pf-btn pf-btn-primary"
+            style={{ textDecoration: 'none' }}
+          >
+            <Mail size={15} strokeWidth={1.5} />
             Start learning
+            <ArrowRight size={15} strokeWidth={1.5} />
           </a>
         </div>
       </div>
@@ -1333,64 +1505,60 @@ function Footer() {
       style={{
         position: 'relative',
         zIndex: 2,
-        padding: '3rem 1.5rem 2rem',
-        borderTop: '1px solid rgba(255,255,255,0.06)',
-        background: 'rgba(0,0,0,0.4)',
+        padding: '3rem 2rem 2rem',
+        borderTop: '1px solid var(--pf-border)',
+        background: 'rgba(8,8,10,0.4)',
+        backdropFilter: 'blur(10px)',
       }}
     >
       <div
         style={{
-          maxWidth: '1280px',
+          maxWidth: '1320px',
           margin: '0 auto',
           display: 'flex',
           flexWrap: 'wrap',
-          gap: '1rem',
+          gap: '1.5rem',
           justifyContent: 'space-between',
           alignItems: 'center',
         }}
       >
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.75rem',
-          }}
-        >
-          <div
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <span
+            className="pf-mono"
             style={{
-              width: 32,
-              height: 32,
-              borderRadius: 8,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              background: 'linear-gradient(135deg, #6ee7ff, #b794ff)',
-              color: '#000',
-              fontWeight: 800,
-              fontSize: '0.8rem',
+              fontSize: '0.7rem',
+              letterSpacing: '0.25em',
+              color: 'var(--pf-accent)',
+              textTransform: 'uppercase',
             }}
           >
             YK
-          </div>
+          </span>
           <span
+            className="pf-display"
             style={{
-              color: 'rgba(255,255,255,0.5)',
-              fontSize: '0.85rem',
+              color: 'var(--pf-fg-muted)',
+              fontSize: '0.9rem',
+              fontWeight: 500,
             }}
           >
-            © {new Date().getFullYear()} Yashkumar U Kolekar. All rights reserved.
+            Yashkumar U Kolekar
           </span>
         </div>
+
         <div
+          className="pf-mono"
           style={{
             display: 'flex',
             gap: '1.5rem',
-            color: 'rgba(255,255,255,0.4)',
-            fontSize: '0.85rem',
+            color: 'var(--pf-fg-dim)',
+            fontSize: '0.7rem',
+            letterSpacing: '0.15em',
+            textTransform: 'uppercase',
           }}
         >
+          <span>© {new Date().getFullYear()}</span>
           <span>Bengaluru, India</span>
-          <span>·</span>
           <span>Built with React Three Fiber</span>
         </div>
       </div>
@@ -1400,6 +1568,22 @@ function Footer() {
 
 // ===== Main page =====
 export default function Page() {
+  // Track mouse position for the card glow effect
+  useEffect(() => {
+    if (window.matchMedia('(max-width: 768px)').matches) return;
+    const handler = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const card = target.closest('.pf-glass');
+      if (card) {
+        const rect = card.getBoundingClientRect();
+        (card as HTMLElement).style.setProperty('--mx', `${e.clientX - rect.left}px`);
+        (card as HTMLElement).style.setProperty('--my', `${e.clientY - rect.top}px`);
+      }
+    };
+    window.addEventListener('mousemove', handler);
+    return () => window.removeEventListener('mousemove', handler);
+  }, []);
+
   return (
     <main style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden' }}>
       <BackgroundDecor />
