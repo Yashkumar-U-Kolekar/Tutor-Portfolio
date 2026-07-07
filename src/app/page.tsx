@@ -58,8 +58,19 @@ const RESUME = {
   title: 'Tutor · B.E. Robotics & AI',
   tagline: 'Simplifying complex concepts, building student confidence.',
   objective:
-    'Dedicated tutor with 3 years of experience teaching school students from 6th standard onward, both one-on-one (online & offline) and in classroom settings during school vacations. Helped many students score above 90% in their exams. Skilled at simplifying complex concepts, building student confidence, and adapting teaching style to each learning environment.',
+    'Dedicated tutor with 4 years of combined experience — 3 years of one-on-one and vacation school teaching, plus 1 year as a home tutor covering offline tuition, school tuition, and online classes. Helped many students score above 90% in their exams. Skilled at simplifying complex concepts, building student confidence, and adapting teaching style to each learning environment.',
   experience: [
+    {
+      title: 'Home Tutor — Offline Tuition, School Tuition & Online Classes',
+      duration: '1 Year',
+      points: [
+        'Provided home tutoring across all three formats — offline one-on-one tuition at students\' homes, school-based classroom teaching, and online classes — giving families flexible learning options.',
+        'Conducted in-person home visits for personalized, face-to-face doubt clearing and concept building, adapting teaching pace to each student\'s individual learning gaps.',
+        'Delivered structured lessons during school tuition hours, managing group classroom dynamics while ensuring every student stayed on track with the curriculum.',
+        'Ran parallel online classes using digital whiteboards and screen-sharing, enabling students to attend sessions remotely without compromising on interactivity.',
+        'Coordinated closely with parents and school staff to align home, school, and online instruction into a single, consistent learning plan for each student.',
+      ],
+    },
     {
       title: 'Tutor — One-on-One (Online & Offline) + Vacation School Teaching',
       duration: '3 Years',
@@ -599,7 +610,7 @@ function HeroSection() {
             }}
           >
             Simplifying complex concepts, building student confidence —
-            helping school students score above 90% for three years.
+            helping school students score above 90% for four years.
           </motion.p>
 
           {/* CTAs */}
@@ -647,7 +658,7 @@ function HeroSection() {
             }}
           >
             {[
-              { value: '3+', label: 'Years tutoring' },
+              { value: '4+', label: 'Years tutoring' },
               { value: '90%', label: 'Avg. scores' },
               { value: '4', label: 'Subjects' },
               { value: '9.2', label: 'CGPA / 10' },
@@ -781,7 +792,7 @@ function CardSection() {
           Interactive · 3D
         </div>
         <h2 className="pf-section-title">
-          Drag my <span className="pf-gradient-text">ID card</span>
+          Drag my <span className="pf-gradient-text">photo card</span>
         </h2>
         <p
           style={{
@@ -803,7 +814,7 @@ function CardSection() {
         gravity={[0, -40, 0]}
         cardGlbUrl="/lanyard/card.glb"
         lanyardImageUrl="/lanyard/lanyard.png"
-        frontImage="/assets/card-front.png"
+        frontImage="/assets/avatar.png"
         backImage="/assets/card-back.png"
         imageFit="cover"
         lanyardWidth={1}
@@ -902,7 +913,7 @@ function ExperienceSection() {
 
         <div className="pf-section-eyebrow">Tutoring Experience</div>
         <h2 className="pf-section-title" style={{ marginBottom: '3rem' }}>
-          Three years of <span className="pf-gradient-text">teaching</span>
+          Four years of <span className="pf-gradient-text">teaching</span>
         </h2>
 
         {RESUME.experience.map((exp, i) => (
@@ -1585,7 +1596,7 @@ export default function Page() {
   }, []);
 
   return (
-    <main style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden' }}>
+    <main style={{ position: 'relative', minHeight: '100vh', overflowX: 'hidden' }}>
       <BackgroundDecor />
       <CursorGlow />
       <ScrollProgress />

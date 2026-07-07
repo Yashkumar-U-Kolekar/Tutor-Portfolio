@@ -43,6 +43,7 @@ body {
   background: var(--pf-bg) !important;
   color: var(--pf-fg) !important;
   scroll-behavior: smooth;
+  overscroll-behavior: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
