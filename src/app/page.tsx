@@ -605,9 +605,9 @@ function HeroSection() {
                 ?.scrollIntoView({ behavior: 'smooth' })
             }
             behindGlowEnabled
-            behindGlowColor="rgba(110, 231, 255, 0.55)"
-            behindGlowSize="55%"
-            innerGradient="linear-gradient(145deg, rgba(110,231,255,0.18) 0%, rgba(183,148,255,0.22) 100%)"
+            behindGlowColor="rgba(110, 231, 255, 0.18)"
+            behindGlowSize="30%"
+            innerGradient="linear-gradient(145deg, rgba(110,231,255,0.06) 0%, rgba(183,148,255,0.08) 100%)"
           />
         </motion.div>
       </div>
