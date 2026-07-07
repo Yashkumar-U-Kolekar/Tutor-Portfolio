@@ -57,7 +57,7 @@ const RESUME = {
   title: 'Tutor · B.E. Robotics & AI',
   tagline: 'Simplifying complex concepts, building student confidence.',
   objective:
-    'Dedicated tutor with 4 years of combined experience — 3 years of one-on-one and vacation school teaching, plus 1 year as a home tutor covering offline tuition, school tuition, and online classes. Helped many students score above 90% in their exams. Skilled at simplifying complex concepts, building student confidence, and adapting teaching style to each learning environment.',
+    "I've spent the last 4 years teaching — one-on-one, in classrooms during school vacations, and as a home tutor across offline, school, and online settings. I teach Mathematics, Physics, Chemistry, and Biology to students from 6th standard onward, and many of them have gone on to score above 90%. What drives me is turning confusing topics into simple, confident understanding — no matter the format or setting.",
   experience: [
     {
       title: 'Home Tutor — Offline Tuition, School Tuition & Online Classes',
@@ -854,18 +854,18 @@ function ExperienceSection() {
   return (
     <section
       id="experience"
-      style={{ position: 'relative', padding: '7rem 2rem', zIndex: 2 }}
+      style={{ position: 'relative', padding: '5rem 2rem', zIndex: 2 }}
     >
       <div ref={ref} className="pf-reveal" style={{ maxWidth: '1100px', margin: '0 auto' }}>
-        <div style={{ display: 'flex', alignItems: 'baseline', gap: '2rem', marginBottom: '3rem' }}>
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: '2rem', marginBottom: '2rem' }}>
           <span className="pf-mono" style={{ fontSize: '0.7rem', color: 'var(--pf-fg-dim)', letterSpacing: '0.3em' }}>
-            03 — EXPERIENCE
+            02 — EXPERIENCE
           </span>
           <span style={{ flex: 1, height: 1, background: 'var(--pf-border)' }} />
         </div>
 
         <div className="pf-section-eyebrow">Tutoring Experience</div>
-        <h2 className="pf-section-title" style={{ marginBottom: '3rem' }}>
+        <h2 className="pf-section-title" style={{ marginBottom: '2rem' }}>
           Four years of <span className="pf-gradient-text">teaching</span>
         </h2>
 
@@ -875,30 +875,31 @@ function ExperienceSection() {
             className="pf-glass"
             style={{
               borderRadius: 6,
-              padding: '2.5rem',
-              marginBottom: '1.5rem',
+              padding: '1.5rem 1.75rem',
+              marginBottom: '1rem',
             }}
           >
             <div
               style={{
                 display: 'flex',
                 flexWrap: 'wrap',
-                gap: '0.75rem 1.5rem',
+                gap: '0.5rem 1.25rem',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                marginBottom: '2rem',
-                paddingBottom: '1.5rem',
+                marginBottom: '1rem',
+                paddingBottom: '0.85rem',
                 borderBottom: '1px solid var(--pf-border)',
               }}
             >
               <h3
                 className="pf-display"
                 style={{
-                  fontSize: '1.4rem',
+                  fontSize: '1.1rem',
                   fontWeight: 500,
                   color: 'var(--pf-fg)',
                   margin: 0,
                   letterSpacing: '-0.015em',
+                  lineHeight: 1.3,
                 }}
               >
                 {exp.title}
@@ -906,30 +907,44 @@ function ExperienceSection() {
               <span
                 className="pf-mono"
                 style={{
-                  padding: '0.4rem 0.85rem',
+                  padding: '0.3rem 0.7rem',
                   background: 'var(--pf-accent-soft)',
                   border: '1px solid var(--pf-accent-line)',
                   color: 'var(--pf-accent)',
-                  fontSize: '0.7rem',
+                  fontSize: '0.65rem',
                   letterSpacing: '0.15em',
                   textTransform: 'uppercase',
                   borderRadius: 2,
+                  flexShrink: 0,
                 }}
               >
                 {exp.duration}
               </span>
             </div>
 
-            <div className="pf-stagger" style={{ display: 'grid', gap: '1.25rem' }}>
+            <div className="pf-stagger" style={{ display: 'grid', gap: '0.6rem' }}>
               {exp.points.map((point, j) => (
-                <div key={j} style={{ display: 'flex', gap: '1.25rem', alignItems: 'flex-start' }}>
-                  <div className="pf-marker">{String(j + 1).padStart(2, '0')}</div>
+                <div key={j} style={{ display: 'flex', gap: '0.85rem', alignItems: 'flex-start' }}>
+                  <span
+                    className="pf-mono"
+                    style={{
+                      fontSize: '0.65rem',
+                      color: 'var(--pf-accent)',
+                      marginTop: '0.3rem',
+                      flexShrink: 0,
+                      minWidth: '1.5rem',
+                      letterSpacing: '0.05em',
+                      opacity: 0.7,
+                    }}
+                  >
+                    {String(j + 1).padStart(2, '0')}
+                  </span>
                   <p
                     style={{
                       margin: 0,
                       color: 'var(--pf-fg-muted)',
-                      lineHeight: 1.7,
-                      fontSize: '0.95rem',
+                      lineHeight: 1.55,
+                      fontSize: '0.82rem',
                       flex: 1,
                     }}
                   >
@@ -956,7 +971,7 @@ function SubjectsSection() {
       <div ref={ref} className="pf-reveal" style={{ maxWidth: '1100px', margin: '0 auto' }}>
         <div style={{ display: 'flex', alignItems: 'baseline', gap: '2rem', marginBottom: '3rem' }}>
           <span className="pf-mono" style={{ fontSize: '0.7rem', color: 'var(--pf-fg-dim)', letterSpacing: '0.3em' }}>
-            04 — SUBJECTS
+            03 — SUBJECTS
           </span>
           <span style={{ flex: 1, height: 1, background: 'var(--pf-border)' }} />
         </div>
@@ -1045,7 +1060,7 @@ function EducationSection() {
       <div ref={ref} className="pf-reveal" style={{ maxWidth: '1100px', margin: '0 auto' }}>
         <div style={{ display: 'flex', alignItems: 'baseline', gap: '2rem', marginBottom: '3rem' }}>
           <span className="pf-mono" style={{ fontSize: '0.7rem', color: 'var(--pf-fg-dim)', letterSpacing: '0.3em' }}>
-            05 — EDUCATION
+            04 — EDUCATION
           </span>
           <span style={{ flex: 1, height: 1, background: 'var(--pf-border)' }} />
         </div>
@@ -1182,7 +1197,7 @@ function AchievementsSection() {
       <div ref={ref} className="pf-reveal" style={{ maxWidth: '1100px', margin: '0 auto' }}>
         <div style={{ display: 'flex', alignItems: 'baseline', gap: '2rem', marginBottom: '3rem' }}>
           <span className="pf-mono" style={{ fontSize: '0.7rem', color: 'var(--pf-fg-dim)', letterSpacing: '0.3em' }}>
-            06 — HONORS
+            05 — HONORS
           </span>
           <span style={{ flex: 1, height: 1, background: 'var(--pf-border)' }} />
         </div>
@@ -1290,7 +1305,7 @@ function ContactSection() {
       <div ref={ref} className="pf-reveal" style={{ maxWidth: '1100px', margin: '0 auto' }}>
         <div style={{ display: 'flex', alignItems: 'baseline', gap: '2rem', marginBottom: '3rem' }}>
           <span className="pf-mono" style={{ fontSize: '0.7rem', color: 'var(--pf-fg-dim)', letterSpacing: '0.3em' }}>
-            07 — CONTACT
+            06 — CONTACT
           </span>
           <span style={{ flex: 1, height: 1, background: 'var(--pf-border)' }} />
         </div>
