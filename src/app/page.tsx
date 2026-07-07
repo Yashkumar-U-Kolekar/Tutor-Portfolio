@@ -20,7 +20,6 @@ import {
   ArrowRight,
 } from 'lucide-react';
 import dynamic from 'next/dynamic';
-import ProfileCard from '@/components/profile-card/ProfileCard';
 import './portfolio.css';
 
 // Dynamically load the 3D Lanyard (browser-only).
@@ -127,13 +126,12 @@ const RESUME = {
 
 const NAV_ITEMS = [
   { id: 'hero', label: 'Index', num: '00' },
-  { id: 'card', label: 'ID Card', num: '01' },
-  { id: 'about', label: 'About', num: '02' },
-  { id: 'experience', label: 'Experience', num: '03' },
-  { id: 'subjects', label: 'Subjects', num: '04' },
-  { id: 'education', label: 'Education', num: '05' },
-  { id: 'achievements', label: 'Honors', num: '06' },
-  { id: 'contact', label: 'Contact', num: '07' },
+  { id: 'about', label: 'About', num: '01' },
+  { id: 'experience', label: 'Experience', num: '02' },
+  { id: 'subjects', label: 'Subjects', num: '03' },
+  { id: 'education', label: 'Education', num: '04' },
+  { id: 'achievements', label: 'Honors', num: '05' },
+  { id: 'contact', label: 'Contact', num: '06' },
 ];
 
 const SUBJECT_ICONS: Record<string, React.ReactNode> = {
@@ -476,7 +474,7 @@ function HeroSection() {
         minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
-        padding: '8rem 2rem 4rem',
+        padding: '7rem 2rem 3rem',
         zIndex: 2,
       }}
     >
@@ -486,8 +484,8 @@ function HeroSection() {
           margin: '0 auto',
           width: '100%',
           display: 'grid',
-          gridTemplateColumns: 'minmax(0, 1.3fr) minmax(0, 0.7fr)',
-          gap: '4rem',
+          gridTemplateColumns: 'minmax(0, 1.15fr) minmax(0, 0.85fr)',
+          gap: '3rem',
           alignItems: 'center',
         }}
         className="hero-grid"
@@ -680,7 +678,7 @@ function HeroSection() {
           </motion.div>
         </div>
 
-        {/* Right: ProfileCard */}
+        {/* Right: Draggable 3D Lanyard card */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -689,27 +687,46 @@ function HeroSection() {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
+            position: 'relative',
           }}
         >
-          <ProfileCard
-            name="Yashkumar Kolekar"
-            title="Tutor · Robotics & AI"
-            handle="yashkumar.kolekar"
-            status="Available for Tutoring"
-            contactText="Contact"
-            avatarUrl="/assets/avatar.png"
-            miniAvatarUrl="/assets/avatar.png"
-            showUserInfo
-            enableTilt
-            enableMobileTilt
-            onContactClick={() =>
-              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
-            }
-            behindGlowEnabled
-            behindGlowColor="rgba(201, 169, 97, 0.22)"
-            behindGlowSize="35%"
-            innerGradient="linear-gradient(145deg, rgba(201,169,97,0.08) 0%, rgba(139,115,85,0.10) 100%)"
-          />
+          <div
+            style={{
+              width: '100%',
+              height: '640px',
+              position: 'relative',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <Lanyard
+              position={[0, 0, 20]}
+              gravity={[0, -40, 0]}
+              cardGlbUrl="/lanyard/card.glb"
+              lanyardImageUrl="/lanyard/lanyard.png"
+              frontImage="/assets/avatar.png"
+              backImage="/assets/card-back.png"
+              imageFit="cover"
+              lanyardWidth={1}
+            />
+            <div
+              className="pf-mono"
+              style={{
+                position: 'absolute',
+                bottom: '1rem',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                fontSize: '0.6rem',
+                letterSpacing: '0.3em',
+                textTransform: 'uppercase',
+                color: 'var(--pf-fg-dim)',
+                pointerEvents: 'none',
+              }}
+            >
+              · Click &amp; drag ·
+            </div>
+          </div>
         </motion.div>
       </div>
 
@@ -759,70 +776,6 @@ function HeroSection() {
           }
         }
       `}</style>
-    </section>
-  );
-}
-
-// ===== Card section =====
-function CardSection() {
-  return (
-    <section
-      id="card"
-      style={{
-        position: 'relative',
-        minHeight: '100vh',
-        zIndex: 2,
-        paddingTop: '4rem',
-      }}
-    >
-      <div
-        style={{
-          position: 'absolute',
-          top: '3rem',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          textAlign: 'center',
-          zIndex: 3,
-          padding: '0 2rem',
-          width: '100%',
-          maxWidth: '640px',
-        }}
-      >
-        <div className="pf-section-eyebrow" style={{ justifyContent: 'center' }}>
-          Interactive · 3D
-        </div>
-        <h2 className="pf-section-title">
-          Drag my <span className="pf-gradient-text">photo card</span>
-        </h2>
-        <p
-          style={{
-            color: 'var(--pf-fg-muted)',
-            marginTop: '1rem',
-            maxWidth: '440px',
-            margin: '1rem auto 0',
-            fontFamily: 'var(--pf-font-display)',
-            fontStyle: 'italic',
-            fontSize: '1.05rem',
-          }}
-        >
-          A real physics simulation — grab the card, swing it, and let it settle.
-        </p>
-      </div>
-
-      <Lanyard
-        position={[0, 0, 20]}
-        gravity={[0, -40, 0]}
-        cardGlbUrl="/lanyard/card.glb"
-        lanyardImageUrl="/lanyard/lanyard.png"
-        frontImage="/assets/avatar.png"
-        backImage="/assets/card-back.png"
-        imageFit="cover"
-        lanyardWidth={1}
-      />
-
-      <div className="pf-lanyard-hint">
-        <span>Click &amp; drag</span>
-      </div>
     </section>
   );
 }
@@ -1603,7 +1556,6 @@ export default function Page() {
       <Nav />
 
       <HeroSection />
-      <CardSection />
       <AboutSection />
       <ExperienceSection />
       <SubjectsSection />
