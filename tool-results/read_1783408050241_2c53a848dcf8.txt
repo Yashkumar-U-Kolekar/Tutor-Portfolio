@@ -1,0 +1,1457 @@
+     1→
+     2→
+     3→**YASHKUMAR U KOLEKAR**
+     4→📞 9742046509 | 📧 yashkumar.kolekar@gmail.com | 📍 Bengaluru, Karnataka
+     5→
+     6→---
+     7→
+     8→**CAREER OBJECTIVE**
+     9→Dedicated tutor with 3 years of experience teaching school students from 6th standard onward, both one-on-one (online & offline) and in classroom settings during school vacations. Helped many students score above 90% in their exams. Skilled at simplifying complex concepts, building student confidence, and adapting teaching style to each learning environment.
+    10→
+    11→**TUTORING EXPERIENCE**
+    12→
+    13→**Tutor — One-on-One (Online & Offline) + Vacation School Teaching** *(3 Years)*
+    14→- Tutored school students from 6th standard onward through one-on-one sessions, both online and offline, helping many achieve scores above 90% in their exams.
+    15→- Taught students at school during vacation periods, delivering structured lessons to groups in a classroom setting.
+    16→- Conducted online sessions using digital whiteboards and screen-sharing for interactive problem-solving; offline sessions focused on personalized, face-to-face doubt-clearing and concept building.
+    17→- Designed customized lesson plans, practice worksheets, and mock tests tailored to each student's pace and learning gaps.
+    18→- Simplified difficult concepts using real-world examples and visual aids, strengthening student fundamentals across formats.
+    19→- Regularly communicated with parents/guardians on student progress and areas needing attention.
+    20→
+    21→**SUBJECTS TAUGHT**
+    22→Mathematics, Physics, Chemistry, Biology (Grades 6–10)
+    23→
+    24→**EDUCATIONAL QUALIFICATIONS**
+    25→
+    26→| Course | Institution | Aggregate | Year |
+    27→|---|---|---|---|
+    28→| B.E. Robotics & AI | Dayananda Sagar College of Engineering | Pursuing (CGPA 9.2/10) | Pursuing |
+    29→| XII / PUC | Narayana PU College | 93.25% | 2023 |
+    30→| 10th / SSLC | Achiever's Academy | 93.75% | 2021 |
+    31→
+    32→**CORE COMPETENCIES**
+    33→- Proficiency in Mathematics, Physics, Chemistry, and Biology (school-level)
+    34→- Curriculum Planning & Lesson Design
+    35→- Student Assessment & Progress Tracking
+    36→- Patience, Adaptability, Communication
+    37→- Online Teaching Tools: Zoom, Google Meet, Google Jamboard, Google Classroom
+    38→
+    39→**ACHIEVEMENTS & RECOGNITION**
+    40→- AWS AI/ML Scholar
+    41→- Reliance Foundation Scholar
+    42→- Selected for Stanford Code in Place Program
+    43→- Microsoft Learn Student Ambassador – Explore AI Challenge
+    44→
+    45→build me an incredible website in html 
+    46→
+    47→
+    48→below is the styling i want in the website
+    49→
+    50→black background with great animations
+    51→
+    52→## Integrate the <Lanyard /> component from React Bits
+    53→
+    54→You are helping integrate an open-source React component into an existing application.
+    55→
+    56→### Component: Lanyard
+    57→### Variant: JavaScript + CSS
+    58→### Dependencies: three meshline @react-three/fiber @react-three/drei @react-three/rapier
+    59→
+    60→---
+    61→
+    62→### Usage Example
+    63→```jsx
+    64→import Lanyard from './Lanyard'
+    65→
+    66→<Lanyard position={[0, 0, 20]} gravity={[0, -40, 0]} />
+    67→
+    68→// Pass custom images for the card's front/back faces and/or the lanyard band.
+    69→// frontImage and backImage render independently; imageFit keeps aspect ratio.
+    70→// lanyardWidth widens the band so a custom band image has more room.
+    71→<Lanyard
+    72→  position={[0,0,24]}
+    73→  gravity={[0,-40,0]}
+    74→  frontImage="/my-front.png"
+    75→  backImage="/my-back.png"
+    76→  imageFit="cover"
+    77→  lanyardImage="/my-band.png"
+    78→  lanyardWidth={1}
+    79→/>
+    80→
+    81→/* IMPORTANT INFO BELOW
+    82→
+    83→1. You MUST have the card.glb and lanyard.png files in your project and import them
+    84→- these can be downloaded from the repo's files, under src/assets/lanyard
+    85→
+    86→2. You can edit your card.glb file in this online .glb editor and change the texture:
+    87→- https://modelviewer.dev/editor/
+    88→- alternatively, pass the "frontImage" / "backImage" props to swap the card's faces at runtime
+    89→
+    90→4. The png file is the texture for the lanyard's band and can be edited in any image editor
+    91→
+    92→5. Your Vite configuration must be updated to include the following in vite.config.js:
+    93→assetsInclude: ['**/*.glb']
+    94→
+    95→6. For TS users, you might need these changes:
+    96→
+    97→- src/global.d.ts
+    98→export { };
+    99→
+   100→declare module '*.glb';
+   101→declare module '*.png';
+   102→
+   103→declare module 'meshline' {
+   104→  export const MeshLineGeometry: any;
+   105→  export const MeshLineMaterial: any;
+   106→}
+   107→
+   108→declare global {
+   109→  namespace JSX {
+   110→    interface IntrinsicElements {
+   111→      meshLineGeometry: any;
+   112→      meshLineMaterial: any;
+   113→    }
+   114→  }
+   115→}
+   116→
+   117→- src/vite-env.d.ts
+   118→/// <reference types="vite/client" />
+   119→declare module '*.glb';
+   120→declare module '*.png';
+   121→*/
+   122→```
+   123→
+   124→### Props
+   125→| Prop | Type | Default | Description |
+   126→|------|------|---------|-------------|
+   127→| position | array | [0, 0, 30] | Initial camera position for the canvas. |
+   128→| gravity | array | [0, -40, 0] | Gravity vector for the physics simulation. |
+   129→| fov | number | 20 | Camera field of view. |
+   130→| transparent | boolean | true | Enables a transparent background for the canvas. |
+   131→| frontImage | string | null | Custom image URL for the card's front face. Falls back to the model's built-in texture when not set. |
+   132→| backImage | string | null | Custom image URL for the card's back face, rendered independently from the front. |
+   133→| imageFit | "cover" | "contain" | "cover" | How a custom front/back image fits its face. Both preserve aspect ratio; 'cover' fills and crops, 'contain' letterboxes. |
+   134→| lanyardImage | string | null | Custom image URL for the lanyard band's repeating texture. Falls back to the default band texture when not set. |
+   135→| lanyardWidth | number | 1 | Width of the lanyard band (meshline lineWidth). Increase it to give a custom band image more room and reduce stretching. |
+   136→
+   137→### Full Component Source
+   138→```jsx
+   139→/* eslint-disable react/no-unknown-property */
+   140→'use client';
+   141→import { useEffect, useMemo, useRef, useState } from 'react';
+   142→import { Canvas, extend, useFrame } from '@react-three/fiber';
+   143→import { useGLTF, useTexture, Environment, Lightformer } from '@react-three/drei';
+   144→import { BallCollider, CuboidCollider, Physics, RigidBody, useRopeJoint, useSphericalJoint } from '@react-three/rapier';
+   145→import { MeshLineGeometry, MeshLineMaterial } from 'meshline';
+   146→
+   147→// replace with your own imports, see the usage snippet for details
+   148→import cardGLB from './card.glb';
+   149→import lanyard from './lanyard.png';
+   150→
+   151→import * as THREE from 'three';
+   152→import './Lanyard.css';
+   153→
+   154→extend({ MeshLineGeometry, MeshLineMaterial });
+   155→
+   156→// 1x1 transparent pixel — lets useTexture be called unconditionally when a
+   157→// front/back image isn't supplied.
+   158→const BLANK_PIXEL =
+   159→  'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';
+   160→
+   161→// The card model's front face is UV-mapped to the LEFT half of the texture
+   162→// atlas and the back face to the RIGHT half (measured from card.glb). Each
+   163→// custom image is composited into its own half so the two faces render
+   164→// independently, aspect-preserving (no stretching).
+   165→const FRONT_UV_RECT = { x: 0, y: 0, w: 0.5, h: 0.755 };
+   166→const BACK_UV_RECT = { x: 0.5, y: 0, w: 0.5, h: 0.757 };
+   167→
+   168→export default function Lanyard({
+   169→  position = [0, 0, 30],
+   170→  gravity = [0, -40, 0],
+   171→  fov = 20,
+   172→  transparent = true,
+   173→  frontImage = null,
+   174→  backImage = null,
+   175→  imageFit = 'cover',
+   176→  lanyardImage = null,
+   177→  lanyardWidth = 1
+   178→}) {
+   179→  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768);
+   180→
+   181→  useEffect(() => {
+   182→    const handleResize = () => setIsMobile(window.innerWidth < 768);
+   183→    window.addEventListener('resize', handleResize);
+   184→    return () => window.removeEventListener('resize', handleResize);
+   185→  }, []);
+   186→
+   187→  return (
+   188→    <div className="lanyard-wrapper">
+   189→      <Canvas
+   190→        camera={{ position: position, fov: fov }}
+   191→        dpr={[1, isMobile ? 1.5 : 2]}
+   192→        gl={{ alpha: transparent }}
+   193→        onCreated={({ gl }) => gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)}
+   194→      >
+   195→        <ambientLight intensity={Math.PI} />
+   196→        <Physics gravity={gravity} timeStep={isMobile ? 1 / 30 : 1 / 60}>
+   197→          <Band
+   198→            isMobile={isMobile}
+   199→            frontImage={frontImage}
+   200→            backImage={backImage}
+   201→            imageFit={imageFit}
+   202→            lanyardImage={lanyardImage}
+   203→            lanyardWidth={lanyardWidth}
+   204→          />
+   205→        </Physics>
+   206→        <Environment blur={0.75}>
+   207→          <Lightformer
+   208→            intensity={2}
+   209→            color="white"
+   210→            position={[0, -1, 5]}
+   211→            rotation={[0, 0, Math.PI / 3]}
+   212→            scale={[100, 0.1, 1]}
+   213→          />
+   214→          <Lightformer
+   215→            intensity={3}
+   216→            color="white"
+   217→            position={[-1, -1, 1]}
+   218→            rotation={[0, 0, Math.PI / 3]}
+   219→            scale={[100, 0.1, 1]}
+   220→          />
+   221→          <Lightformer
+   222→            intensity={3}
+   223→            color="white"
+   224→            position={[1, 1, 1]}
+   225→            rotation={[0, 0, Math.PI / 3]}
+   226→            scale={[100, 0.1, 1]}
+   227→          />
+   228→          <Lightformer
+   229→            intensity={10}
+   230→            color="white"
+   231→            position={[-10, 0, 14]}
+   232→            rotation={[0, Math.PI / 2, Math.PI / 3]}
+   233→            scale={[100, 10, 1]}
+   234→          />
+   235→        </Environment>
+   236→      </Canvas>
+   237→    </div>
+   238→  );
+   239→}
+   240→function Band({
+   241→  maxSpeed = 50,
+   242→  minSpeed = 0,
+   243→  isMobile = false,
+   244→  frontImage = null,
+   245→  backImage = null,
+   246→  imageFit = 'cover',
+   247→  lanyardImage = null,
+   248→  lanyardWidth = 1
+   249→}) {
+   250→  const band = useRef(),
+   251→    fixed = useRef(),
+   252→    j1 = useRef(),
+   253→    j2 = useRef(),
+   254→    j3 = useRef(),
+   255→    card = useRef();
+   256→  const vec = new THREE.Vector3(),
+   257→    ang = new THREE.Vector3(),
+   258→    rot = new THREE.Vector3(),
+   259→    dir = new THREE.Vector3();
+   260→  const segmentProps = { type: 'dynamic', canSleep: true, colliders: false, angularDamping: 4, linearDamping: 4 };
+   261→  const { nodes, materials } = useGLTF(cardGLB);
+   262→  const texture = useTexture(lanyardImage || lanyard);
+   263→  // useTexture must be called unconditionally; use a blank pixel when an image
+   264→  // isn't supplied for a given face, then skip compositing it below.
+   265→  const frontTex = useTexture(frontImage || BLANK_PIXEL);
+   266→  const backTex = useTexture(backImage || BLANK_PIXEL);
+   267→
+   268→  // Composite the front/back images into the card's texture atlas (front = left
+   269→  // half, back = right half). Each image is drawn aspect-preserving (no stretch).
+   270→  const cardMap = useMemo(() => {
+   271→    const baseMap = materials.base.map;
+   272→    if (!frontImage && !backImage) return baseMap;
+   273→
+   274→    const baseImg = baseMap.image;
+   275→    const W = baseImg.width;
+   276→    const H = baseImg.height;
+   277→    const canvas = document.createElement('canvas');
+   278→    canvas.width = W;
+   279→    canvas.height = H;
+   280→    const ctx = canvas.getContext('2d');
+   281→    if (!ctx) return baseMap;
+   282→    // Keep the original baked atlas for the card edges and any untouched face.
+   283→    ctx.drawImage(baseImg, 0, 0, W, H);
+   284→
+   285→    const drawFitted = (img, rect) => {
+   286→      const rx = rect.x * W;
+   287→      const ry = rect.y * H;
+   288→      const rw = rect.w * W;
+   289→      const rh = rect.h * H;
+   290→      const pick = imageFit === 'contain' ? Math.min : Math.max;
+   291→      const scale = pick(rw / img.width, rh / img.height);
+   292→      const dw = img.width * scale;
+   293→      const dh = img.height * scale;
+   294→      const dx = rx + (rw - dw) / 2;
+   295→      const dy = ry + (rh - dh) / 2;
+   296→      ctx.save();
+   297→      ctx.beginPath();
+   298→      ctx.rect(rx, ry, rw, rh);
+   299→      ctx.clip();
+   300→      ctx.drawImage(img, dx, dy, dw, dh);
+   301→      ctx.restore();
+   302→    };
+   303→
+   304→    if (frontImage && frontTex.image) drawFitted(frontTex.image, FRONT_UV_RECT);
+   305→    if (backImage && backTex.image) drawFitted(backTex.image, BACK_UV_RECT);
+   306→
+   307→    const composite = new THREE.CanvasTexture(canvas);
+   308→    composite.colorSpace = THREE.SRGBColorSpace;
+   309→    composite.flipY = baseMap.flipY;
+   310→    composite.anisotropy = 16;
+   311→    composite.needsUpdate = true;
+   312→    return composite;
+   313→  }, [frontImage, backImage, imageFit, frontTex, backTex, materials.base.map]);
+   314→  const [curve] = useState(
+   315→    () =>
+   316→      new THREE.CatmullRomCurve3([new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()])
+   317→  );
+   318→  const [dragged, drag] = useState(false);
+   319→  const [hovered, hover] = useState(false);
+   320→
+   321→  useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 1]);
+   322→  useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 1]);
+   323→  useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 1]);
+   324→  useSphericalJoint(j3, card, [
+   325→    [0, 0, 0],
+   326→    [0, 1.5, 0]
+   327→  ]);
+   328→
+   329→  useEffect(() => {
+   330→    if (hovered) {
+   331→      document.body.style.cursor = dragged ? 'grabbing' : 'grab';
+   332→      return () => void (document.body.style.cursor = 'auto');
+   333→    }
+   334→  }, [hovered, dragged]);
+   335→
+   336→  useFrame((state, delta) => {
+   337→    if (dragged) {
+   338→      vec.set(state.pointer.x, state.pointer.y, 0.5).unproject(state.camera);
+   339→      dir.copy(vec).sub(state.camera.position).normalize();
+   340→      vec.add(dir.multiplyScalar(state.camera.position.length()));
+   341→      [card, j1, j2, j3, fixed].forEach(ref => ref.current?.wakeUp());
+   342→      card.current?.setNextKinematicTranslation({ x: vec.x - dragged.x, y: vec.y - dragged.y, z: vec.z - dragged.z });
+   343→    }
+   344→    if (fixed.current) {
+   345→      [j1, j2].forEach(ref => {
+   346→        if (!ref.current.lerped) ref.current.lerped = new THREE.Vector3().copy(ref.current.translation());
+   347→        const clampedDistance = Math.max(0.1, Math.min(1, ref.current.lerped.distanceTo(ref.current.translation())));
+   348→        ref.current.lerped.lerp(
+   349→          ref.current.translation(),
+   350→          delta * (minSpeed + clampedDistance * (maxSpeed - minSpeed))
+   351→        );
+   352→      });
+   353→      curve.points[0].copy(j3.current.translation());
+   354→      curve.points[1].copy(j2.current.lerped);
+   355→      curve.points[2].copy(j1.current.lerped);
+   356→      curve.points[3].copy(fixed.current.translation());
+   357→      band.current.geometry.setPoints(curve.getPoints(isMobile ? 16 : 32));
+   358→      ang.copy(card.current.angvel());
+   359→      rot.copy(card.current.rotation());
+   360→      card.current.setAngvel({ x: ang.x, y: ang.y - rot.y * 0.25, z: ang.z });
+   361→    }
+   362→  });
+   363→
+   364→  curve.curveType = 'chordal';
+   365→  texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+   366→
+   367→  return (
+   368→    <>
+   369→      <group position={[0, 4, 0]}>
+   370→        <RigidBody ref={fixed} {...segmentProps} type="fixed" />
+   371→        <RigidBody position={[0.5, 0, 0]} ref={j1} {...segmentProps}>
+   372→          <BallCollider args={[0.1]} />
+   373→        </RigidBody>
+   374→        <RigidBody position={[1, 0, 0]} ref={j2} {...segmentProps}>
+   375→          <BallCollider args={[0.1]} />
+   376→        </RigidBody>
+   377→        <RigidBody position={[1.5, 0, 0]} ref={j3} {...segmentProps}>
+   378→          <BallCollider args={[0.1]} />
+   379→        </RigidBody>
+   380→        <RigidBody position={[2, 0, 0]} ref={card} {...segmentProps} type={dragged ? 'kinematicPosition' : 'dynamic'}>
+   381→          <CuboidCollider args={[0.8, 1.125, 0.01]} />
+   382→          <group
+   383→            scale={2.25}
+   384→            position={[0, -1.2, -0.05]}
+   385→            onPointerOver={() => hover(true)}
+   386→            onPointerOut={() => hover(false)}
+   387→            onPointerUp={e => (e.target.releasePointerCapture(e.pointerId), drag(false))}
+   388→            onPointerDown={e => (
+   389→              e.target.setPointerCapture(e.pointerId),
+   390→              drag(new THREE.Vector3().copy(e.point).sub(vec.copy(card.current.translation())))
+   391→            )}
+   392→          >
+   393→            <mesh geometry={nodes.card.geometry}>
+   394→              <meshPhysicalMaterial
+   395→                map={cardMap}
+   396→                map-anisotropy={16}
+   397→                clearcoat={isMobile ? 0 : 1}
+   398→                clearcoatRoughness={0.15}
+   399→                roughness={0.9}
+   400→                metalness={0.8}
+   401→              />
+   402→            </mesh>
+   403→            <mesh geometry={nodes.clip.geometry} material={materials.metal} material-roughness={0.3} />
+   404→            <mesh geometry={nodes.clamp.geometry} material={materials.metal} />
+   405→          </group>
+   406→        </RigidBody>
+   407→      </group>
+   408→      <mesh ref={band}>
+   409→        <meshLineGeometry />
+   410→        <meshLineMaterial
+   411→          color="white"
+   412→          depthTest={false}
+   413→          resolution={isMobile ? [1000, 2000] : [1000, 1000]}
+   414→          useMap
+   415→          map={texture}
+   416→          repeat={[-4, 1]}
+   417→          lineWidth={lanyardWidth}
+   418→        />
+   419→      </mesh>
+   420→    </>
+   421→  );
+   422→}
+   423→
+   424→```
+   425→
+   426→### Component CSS
+   427→```css
+   428→.lanyard-wrapper {
+   429→  position: relative;
+   430→  z-index: 0;
+   431→  width: 100%;
+   432→  height: 100vh;
+   433→  display: flex;
+   434→  justify-content: center;
+   435→  align-items: center;
+   436→  transform: scale(1);
+   437→  transform-origin: center;
+   438→}
+   439→
+   440→```
+   441→
+   442→### Integration Instructions
+   443→1. Install any listed dependencies.
+   444→2. Copy the component source into the appropriate directory in the project.
+   445→3. Import the CSS file alongside the component.
+   446→4. Import and render the component using the usage example above as a starting point.
+   447→5. Adjust props as needed for the specific use case — refer to the props table for all available options.
+   448→ include this
+   449→
+   450→
+   451→## Integrate the <ProfileCard /> component from React Bits
+   452→
+   453→You are helping integrate an open-source React component into an existing application.
+   454→
+   455→### Component: ProfileCard
+   456→### Variant: JavaScript + CSS
+   457→
+   458→
+   459→---
+   460→
+   461→### Usage Example
+   462→```jsx
+   463→import ProfileCard from './ProfileCard'
+   464→  
+   465→<ProfileCard
+   466→  name="Javi A. Torres"
+   467→  title="Software Engineer"
+   468→  handle="javicodes"
+   469→  status="Online"
+   470→  contactText="Contact Me"
+   471→  avatarUrl="/path/to/avatar.jpg"
+   472→  showUserInfo={true}
+   473→  enableTilt={true}
+   474→  enableMobileTilt={false}
+   475→  onContactClick={() => console.log('Contact clicked')}
+   476→  iconUrl="/assets/demo/iconpattern.png"
+   477→  behindGlowEnabled
+   478→  innerGradient="linear-gradient(145deg,#60496e8c 0%,#71C4FF44 100%)"
+   479→/>
+   480→```
+   481→
+   482→### Props
+   483→| Prop | Type | Default | Description |
+   484→|------|------|---------|-------------|
+   485→| avatarUrl | string | "<Placeholder for avatar URL>" | URL for the main avatar image displayed on the card |
+   486→| iconUrl | string | "<Placeholder for icon URL>" | Optional URL for an icon pattern overlay on the card background |
+   487→| grainUrl | string | "<Placeholder for grain URL>" | Optional URL for a grain texture overlay effect |
+   488→| innerGradient | string | undefined | Custom CSS gradient string for the inner card gradient |
+   489→| behindGlowEnabled | boolean | true | Toggle the smooth radial glow that follows the cursor behind the card |
+   490→| behindGlowColor | string | "rgba(125, 190, 255, 0.67)" | CSS color for the behind-the-card glow (e.g. rgba/hsla/hex) |
+   491→| behindGlowSize | string | "50%" | Size of the glow as a length/percentage stop in the radial gradient |
+   492→| className | string | "" | Additional CSS classes to apply to the card wrapper |
+   493→| enableTilt | boolean | true | Enable or disable the 3D tilt effect on mouse hover |
+   494→| enableMobileTilt | boolean | false | Enable or disable the 3D tilt effect on mobile devices |
+   495→| mobileTiltSensitivity | number | 5 | Sensitivity of the 3D tilt effect on mobile devices |
+   496→| miniAvatarUrl | string | undefined | Optional URL for a smaller avatar in the user info section |
+   497→| name | string | "Javi A. Torres" | User's display name |
+   498→| title | string | "Software Engineer" | User's job title or role |
+   499→| handle | string | "javicodes" | User's handle or username (displayed with @ prefix) |
+   500→| status | string | "Online" | User's current status |
+   501→| contactText | string | "Contact" | Text displayed on the contact button |
+   502→| showUserInfo | boolean | true | Whether to display the user information section |
+   503→| onContactClick | function | undefined | Callback function called when the contact button is clicked |
+   504→
+   505→### Full Component Source
+   506→```jsx
+   507→import React, { useEffect, useRef, useCallback, useMemo } from 'react';
+   508→import './ProfileCard.css';
+   509→
+   510→const DEFAULT_INNER_GRADIENT = 'linear-gradient(145deg,#60496e8c 0%,#71C4FF44 100%)';
+   511→
+   512→const ANIMATION_CONFIG = {
+   513→  INITIAL_DURATION: 1200,
+   514→  INITIAL_X_OFFSET: 70,
+   515→  INITIAL_Y_OFFSET: 60,
+   516→  DEVICE_BETA_OFFSET: 20,
+   517→  ENTER_TRANSITION_MS: 180
+   518→};
+   519→
+   520→const clamp = (v, min = 0, max = 100) => Math.min(Math.max(v, min), max);
+   521→const round = (v, precision = 3) => parseFloat(v.toFixed(precision));
+   522→const adjust = (v, fMin, fMax, tMin, tMax) => round(tMin + ((tMax - tMin) * (v - fMin)) / (fMax - fMin));
+   523→
+   524→const ProfileCardComponent = ({
+   525→  avatarUrl = '<Placeholder for avatar URL>',
+   526→  iconUrl = '<Placeholder for icon URL>',
+   527→  grainUrl = '<Placeholder for grain URL>',
+   528→  innerGradient,
+   529→  behindGlowEnabled = true,
+   530→  behindGlowColor,
+   531→  behindGlowSize,
+   532→  className = '',
+   533→  enableTilt = true,
+   534→  enableMobileTilt = false,
+   535→  mobileTiltSensitivity = 5,
+   536→  miniAvatarUrl,
+   537→  name = 'Javi A. Torres',
+   538→  title = 'Software Engineer',
+   539→  handle = 'javicodes',
+   540→  status = 'Online',
+   541→  contactText = 'Contact',
+   542→  showUserInfo = true,
+   543→  onContactClick
+   544→}) => {
+   545→  const wrapRef = useRef(null);
+   546→  const shellRef = useRef(null);
+   547→
+   548→  const enterTimerRef = useRef(null);
+   549→  const leaveRafRef = useRef(null);
+   550→
+   551→  const tiltEngine = useMemo(() => {
+   552→    if (!enableTilt) return null;
+   553→
+   554→    let rafId = null;
+   555→    let running = false;
+   556→    let lastTs = 0;
+   557→
+   558→    let currentX = 0;
+   559→    let currentY = 0;
+   560→    let targetX = 0;
+   561→    let targetY = 0;
+   562→
+   563→    const DEFAULT_TAU = 0.14;
+   564→    const INITIAL_TAU = 0.6;
+   565→    let initialUntil = 0;
+   566→
+   567→    const setVarsFromXY = (x, y) => {
+   568→      const shell = shellRef.current;
+   569→      const wrap = wrapRef.current;
+   570→      if (!shell || !wrap) return;
+   571→
+   572→      const width = shell.clientWidth || 1;
+   573→      const height = shell.clientHeight || 1;
+   574→
+   575→      const percentX = clamp((100 / width) * x);
+   576→      const percentY = clamp((100 / height) * y);
+   577→
+   578→      const centerX = percentX - 50;
+   579→      const centerY = percentY - 50;
+   580→
+   581→      const properties = {
+   582→        '--pointer-x': `${percentX}%`,
+   583→        '--pointer-y': `${percentY}%`,
+   584→        '--background-x': `${adjust(percentX, 0, 100, 35, 65)}%`,
+   585→        '--background-y': `${adjust(percentY, 0, 100, 35, 65)}%`,
+   586→        '--pointer-from-center': `${clamp(Math.hypot(percentY - 50, percentX - 50) / 50, 0, 1)}`,
+   587→        '--pointer-from-top': `${percentY / 100}`,
+   588→        '--pointer-from-left': `${percentX / 100}`,
+   589→        '--rotate-x': `${round(-(centerX / 5))}deg`,
+   590→        '--rotate-y': `${round(centerY / 4)}deg`
+   591→      };
+   592→
+   593→      for (const [k, v] of Object.entries(properties)) wrap.style.setProperty(k, v);
+   594→    };
+   595→
+   596→    const step = ts => {
+   597→      if (!running) return;
+   598→      if (lastTs === 0) lastTs = ts;
+   599→      const dt = (ts - lastTs) / 1000;
+   600→      lastTs = ts;
+   601→
+   602→      const tau = ts < initialUntil ? INITIAL_TAU : DEFAULT_TAU;
+   603→      const k = 1 - Math.exp(-dt / tau);
+   604→
+   605→      currentX += (targetX - currentX) * k;
+   606→      currentY += (targetY - currentY) * k;
+   607→
+   608→      setVarsFromXY(currentX, currentY);
+   609→
+   610→      const stillFar = Math.abs(targetX - currentX) > 0.05 || Math.abs(targetY - currentY) > 0.05;
+   611→
+   612→      if (stillFar || document.hasFocus()) {
+   613→        rafId = requestAnimationFrame(step);
+   614→      } else {
+   615→        running = false;
+   616→        lastTs = 0;
+   617→        if (rafId) {
+   618→          cancelAnimationFrame(rafId);
+   619→          rafId = null;
+   620→        }
+   621→      }
+   622→    };
+   623→
+   624→    const start = () => {
+   625→      if (running) return;
+   626→      running = true;
+   627→      lastTs = 0;
+   628→      rafId = requestAnimationFrame(step);
+   629→    };
+   630→
+   631→    return {
+   632→      setImmediate(x, y) {
+   633→        currentX = x;
+   634→        currentY = y;
+   635→        setVarsFromXY(currentX, currentY);
+   636→      },
+   637→      setTarget(x, y) {
+   638→        targetX = x;
+   639→        targetY = y;
+   640→        start();
+   641→      },
+   642→      toCenter() {
+   643→        const shell = shellRef.current;
+   644→        if (!shell) return;
+   645→        this.setTarget(shell.clientWidth / 2, shell.clientHeight / 2);
+   646→      },
+   647→      beginInitial(durationMs) {
+   648→        initialUntil = performance.now() + durationMs;
+   649→        start();
+   650→      },
+   651→      getCurrent() {
+   652→        return { x: currentX, y: currentY, tx: targetX, ty: targetY };
+   653→      },
+   654→      cancel() {
+   655→        if (rafId) cancelAnimationFrame(rafId);
+   656→        rafId = null;
+   657→        running = false;
+   658→        lastTs = 0;
+   659→      }
+   660→    };
+   661→  }, [enableTilt]);
+   662→
+   663→  const getOffsets = (evt, el) => {
+   664→    const rect = el.getBoundingClientRect();
+   665→    return { x: evt.clientX - rect.left, y: evt.clientY - rect.top };
+   666→  };
+   667→
+   668→  const handlePointerMove = useCallback(
+   669→    event => {
+   670→      const shell = shellRef.current;
+   671→      if (!shell || !tiltEngine) return;
+   672→      const { x, y } = getOffsets(event, shell);
+   673→      tiltEngine.setTarget(x, y);
+   674→    },
+   675→    [tiltEngine]
+   676→  );
+   677→
+   678→  const handlePointerEnter = useCallback(
+   679→    event => {
+   680→      const shell = shellRef.current;
+   681→      if (!shell || !tiltEngine) return;
+   682→
+   683→      shell.classList.add('active');
+   684→      shell.classList.add('entering');
+   685→      if (enterTimerRef.current) window.clearTimeout(enterTimerRef.current);
+   686→      enterTimerRef.current = window.setTimeout(() => {
+   687→        shell.classList.remove('entering');
+   688→      }, ANIMATION_CONFIG.ENTER_TRANSITION_MS);
+   689→
+   690→      const { x, y } = getOffsets(event, shell);
+   691→      tiltEngine.setTarget(x, y);
+   692→    },
+   693→    [tiltEngine]
+   694→  );
+   695→
+   696→  const handlePointerLeave = useCallback(() => {
+   697→    const shell = shellRef.current;
+   698→    if (!shell || !tiltEngine) return;
+   699→
+   700→    tiltEngine.toCenter();
+   701→
+   702→    const checkSettle = () => {
+   703→      const { x, y, tx, ty } = tiltEngine.getCurrent();
+   704→      const settled = Math.hypot(tx - x, ty - y) < 0.6;
+   705→      if (settled) {
+   706→        shell.classList.remove('active');
+   707→        leaveRafRef.current = null;
+   708→      } else {
+   709→        leaveRafRef.current = requestAnimationFrame(checkSettle);
+   710→      }
+   711→    };
+   712→    if (leaveRafRef.current) cancelAnimationFrame(leaveRafRef.current);
+   713→    leaveRafRef.current = requestAnimationFrame(checkSettle);
+   714→  }, [tiltEngine]);
+   715→
+   716→  const handleDeviceOrientation = useCallback(
+   717→    event => {
+   718→      const shell = shellRef.current;
+   719→      if (!shell || !tiltEngine) return;
+   720→
+   721→      const { beta, gamma } = event;
+   722→      if (beta == null || gamma == null) return;
+   723→
+   724→      const centerX = shell.clientWidth / 2;
+   725→      const centerY = shell.clientHeight / 2;
+   726→      const x = clamp(centerX + gamma * mobileTiltSensitivity, 0, shell.clientWidth);
+   727→      const y = clamp(
+   728→        centerY + (beta - ANIMATION_CONFIG.DEVICE_BETA_OFFSET) * mobileTiltSensitivity,
+   729→        0,
+   730→        shell.clientHeight
+   731→      );
+   732→
+   733→      tiltEngine.setTarget(x, y);
+   734→    },
+   735→    [tiltEngine, mobileTiltSensitivity]
+   736→  );
+   737→
+   738→  useEffect(() => {
+   739→    if (!enableTilt || !tiltEngine) return;
+   740→
+   741→    const shell = shellRef.current;
+   742→    if (!shell) return;
+   743→
+   744→    const pointerMoveHandler = handlePointerMove;
+   745→    const pointerEnterHandler = handlePointerEnter;
+   746→    const pointerLeaveHandler = handlePointerLeave;
+   747→    const deviceOrientationHandler = handleDeviceOrientation;
+   748→
+   749→    shell.addEventListener('pointerenter', pointerEnterHandler);
+   750→    shell.addEventListener('pointermove', pointerMoveHandler);
+   751→    shell.addEventListener('pointerleave', pointerLeaveHandler);
+   752→
+   753→    const handleClick = () => {
+   754→      if (!enableMobileTilt || location.protocol !== 'https:') return;
+   755→      const anyMotion = window.DeviceMotionEvent;
+   756→      if (anyMotion && typeof anyMotion.requestPermission === 'function') {
+   757→        anyMotion
+   758→          .requestPermission()
+   759→          .then(state => {
+   760→            if (state === 'granted') {
+   761→              window.addEventListener('deviceorientation', deviceOrientationHandler);
+   762→            }
+   763→          })
+   764→          .catch(console.error);
+   765→      } else {
+   766→        window.addEventListener('deviceorientation', deviceOrientationHandler);
+   767→      }
+   768→    };
+   769→    shell.addEventListener('click', handleClick);
+   770→
+   771→    const initialX = (shell.clientWidth || 0) - ANIMATION_CONFIG.INITIAL_X_OFFSET;
+   772→    const initialY = ANIMATION_CONFIG.INITIAL_Y_OFFSET;
+   773→    tiltEngine.setImmediate(initialX, initialY);
+   774→    tiltEngine.toCenter();
+   775→    tiltEngine.beginInitial(ANIMATION_CONFIG.INITIAL_DURATION);
+   776→
+   777→    return () => {
+   778→      shell.removeEventListener('pointerenter', pointerEnterHandler);
+   779→      shell.removeEventListener('pointermove', pointerMoveHandler);
+   780→      shell.removeEventListener('pointerleave', pointerLeaveHandler);
+   781→      shell.removeEventListener('click', handleClick);
+   782→      window.removeEventListener('deviceorientation', deviceOrientationHandler);
+   783→      if (enterTimerRef.current) window.clearTimeout(enterTimerRef.current);
+   784→      if (leaveRafRef.current) cancelAnimationFrame(leaveRafRef.current);
+   785→      tiltEngine.cancel();
+   786→      shell.classList.remove('entering');
+   787→    };
+   788→  }, [
+   789→    enableTilt,
+   790→    enableMobileTilt,
+   791→    tiltEngine,
+   792→    handlePointerMove,
+   793→    handlePointerEnter,
+   794→    handlePointerLeave,
+   795→    handleDeviceOrientation
+   796→  ]);
+   797→
+   798→  const cardStyle = useMemo(
+   799→    () => ({
+   800→      '--icon': iconUrl ? `url(${iconUrl})` : 'none',
+   801→      '--grain': grainUrl ? `url(${grainUrl})` : 'none',
+   802→      '--inner-gradient': innerGradient ?? DEFAULT_INNER_GRADIENT,
+   803→      '--behind-glow-color': behindGlowColor ?? 'rgba(125, 190, 255, 0.67)',
+   804→      '--behind-glow-size': behindGlowSize ?? '50%'
+   805→    }),
+   806→    [iconUrl, grainUrl, innerGradient, behindGlowColor, behindGlowSize]
+   807→  );
+   808→
+   809→  const handleContactClick = useCallback(() => {
+   810→    onContactClick?.();
+   811→  }, [onContactClick]);
+   812→
+   813→  return (
+   814→    <div ref={wrapRef} className={`pc-card-wrapper ${className}`.trim()} style={cardStyle}>
+   815→      {behindGlowEnabled && <div className="pc-behind" />}
+   816→      <div ref={shellRef} className="pc-card-shell">
+   817→        <section className="pc-card">
+   818→          <div className="pc-inside">
+   819→            <div className="pc-shine" />
+   820→            <div className="pc-glare" />
+   821→            <div className="pc-content pc-avatar-content">
+   822→              <img
+   823→                className="avatar"
+   824→                src={avatarUrl}
+   825→                alt={`${name || 'User'} avatar`}
+   826→                loading="lazy"
+   827→                onError={e => {
+   828→                  const t = e.target;
+   829→                  t.style.display = 'none';
+   830→                }}
+   831→              />
+   832→              {showUserInfo && (
+   833→                <div className="pc-user-info">
+   834→                  <div className="pc-user-details">
+   835→                    <div className="pc-mini-avatar">
+   836→                      <img
+   837→                        src={miniAvatarUrl || avatarUrl}
+   838→                        alt={`${name || 'User'} mini avatar`}
+   839→                        loading="lazy"
+   840→                        onError={e => {
+   841→                          const t = e.target;
+   842→                          t.style.opacity = '0.5';
+   843→                          t.src = avatarUrl;
+   844→                        }}
+   845→                      />
+   846→                    </div>
+   847→                    <div className="pc-user-text">
+   848→                      <div className="pc-handle">@{handle}</div>
+   849→                      <div className="pc-status">{status}</div>
+   850→                    </div>
+   851→                  </div>
+   852→                  <button
+   853→                    className="pc-contact-btn"
+   854→                    onClick={handleContactClick}
+   855→                    style={{ pointerEvents: 'auto' }}
+   856→                    type="button"
+   857→                    aria-label={`Contact ${name || 'user'}`}
+   858→                  >
+   859→                    {contactText}
+   860→                  </button>
+   861→                </div>
+   862→              )}
+   863→            </div>
+   864→            <div className="pc-content">
+   865→              <div className="pc-details">
+   866→                <h3>{name}</h3>
+   867→                <p>{title}</p>
+   868→              </div>
+   869→            </div>
+   870→          </div>
+   871→        </section>
+   872→      </div>
+   873→    </div>
+   874→  );
+   875→};
+   876→
+   877→const ProfileCard = React.memo(ProfileCardComponent);
+   878→export default ProfileCard;
+   879→
+   880→```
+   881→
+   882→### Component CSS
+   883→```css
+   884→:root {
+   885→  --pointer-x: 50%;
+   886→  --pointer-y: 50%;
+   887→  --pointer-from-center: 0;
+   888→  --pointer-from-top: 0.5;
+   889→  --pointer-from-left: 0.5;
+   890→  --card-opacity: 0;
+   891→  --rotate-x: 0deg;
+   892→  --rotate-y: 0deg;
+   893→  --background-x: 50%;
+   894→  --background-y: 50%;
+   895→  --grain: none;
+   896→  --icon: none;
+   897→  --behind-gradient: none;
+   898→  --behind-glow-color: rgba(125, 190, 255, 0.67);
+   899→  --behind-glow-size: 25%;
+   900→  --inner-gradient: none;
+   901→  --sunpillar-1: hsl(2, 100%, 73%);
+   902→  --sunpillar-2: hsl(53, 100%, 69%);
+   903→  --sunpillar-3: hsl(93, 100%, 69%);
+   904→  --sunpillar-4: hsl(176, 100%, 76%);
+   905→  --sunpillar-5: hsl(228, 100%, 74%);
+   906→  --sunpillar-6: hsl(283, 100%, 73%);
+   907→  --sunpillar-clr-1: var(--sunpillar-1);
+   908→  --sunpillar-clr-2: var(--sunpillar-2);
+   909→  --sunpillar-clr-3: var(--sunpillar-3);
+   910→  --sunpillar-clr-4: var(--sunpillar-4);
+   911→  --sunpillar-clr-5: var(--sunpillar-5);
+   912→  --sunpillar-clr-6: var(--sunpillar-6);
+   913→  --card-radius: 30px;
+   914→}
+   915→
+   916→.pc-card-wrapper {
+   917→  perspective: 500px;
+   918→  transform: translate3d(0, 0, 0.1px);
+   919→  position: relative;
+   920→  touch-action: none;
+   921→}
+   922→
+   923→.pc-behind {
+   924→  position: absolute;
+   925→  inset: 0;
+   926→  z-index: 0;
+   927→  pointer-events: none;
+   928→  background: radial-gradient(
+   929→    circle at var(--pointer-x) var(--pointer-y),
+   930→    var(--behind-glow-color) 0%,
+   931→    transparent var(--behind-glow-size)
+   932→  );
+   933→  filter: blur(50px) saturate(1.1);
+   934→  opacity: calc(0.8 * var(--card-opacity));
+   935→  transition: opacity 200ms ease;
+   936→}
+   937→
+   938→.pc-card-wrapper:hover,
+   939→.pc-card-wrapper.active {
+   940→  --card-opacity: 1;
+   941→}
+   942→
+   943→.pc-card {
+   944→  height: 80svh;
+   945→  max-height: 540px;
+   946→  display: grid;
+   947→  aspect-ratio: 0.718;
+   948→  border-radius: var(--card-radius);
+   949→  position: relative;
+   950→  background-blend-mode: color-dodge, normal, normal, normal;
+   951→  animation: glow-bg 12s linear infinite;
+   952→  box-shadow: rgba(0, 0, 0, 0.8) calc((var(--pointer-from-left) * 10px) - 3px)
+   953→    calc((var(--pointer-from-top) * 20px) - 6px) 20px -5px;
+   954→  transition: transform 1s ease;
+   955→  transform: translateZ(0) rotateX(0deg) rotateY(0deg);
+   956→  background: rgba(0, 0, 0, 0.9);
+   957→  backface-visibility: hidden;
+   958→  overflow: hidden;
+   959→}
+   960→
+   961→.pc-card:hover,
+   962→.pc-card.active {
+   963→  transition: none;
+   964→  transform: translateZ(0) rotateX(var(--rotate-y)) rotateY(var(--rotate-x));
+   965→}
+   966→
+   967→.pc-card-shell.entering .pc-card {
+   968→  transition: transform 180ms ease-out;
+   969→}
+   970→
+   971→.pc-card-shell {
+   972→  position: relative;
+   973→  z-index: 1;
+   974→}
+   975→
+   976→.pc-card * {
+   977→  display: grid;
+   978→  grid-area: 1/-1;
+   979→  border-radius: var(--card-radius);
+   980→  pointer-events: none;
+   981→}
+   982→
+   983→.pc-inside {
+   984→  inset: 0;
+   985→  position: absolute;
+   986→  background-image: var(--inner-gradient);
+   987→  background-color: rgba(0, 0, 0, 0.9);
+   988→  transform: none;
+   989→}
+   990→
+   991→.pc-shine {
+   992→  mask-image: var(--icon);
+   993→  mask-mode: luminance;
+   994→  mask-repeat: repeat;
+   995→  mask-size: 150%;
+   996→  mask-position: top calc(200% - (var(--background-y) * 5)) left calc(100% - var(--background-x));
+   997→  transition: filter 0.8s ease;
+   998→  filter: brightness(0.66) contrast(1.33) saturate(0.33) opacity(0.5);
+   999→  animation: holo-bg 18s linear infinite;
+  1000→  animation-play-state: running;
+  1001→  mix-blend-mode: color-dodge;
+  1002→}
+  1003→
+  1004→.pc-shine,
+  1005→.pc-shine::after {
+  1006→  --space: 5%;
+  1007→  --angle: -45deg;
+  1008→  transform: translate3d(0, 0, 1px);
+  1009→  overflow: hidden;
+  1010→  z-index: 3;
+  1011→  background: transparent;
+  1012→  background-size: cover;
+  1013→  background-position: center;
+  1014→  background-image:
+  1015→    repeating-linear-gradient(
+  1016→      0deg,
+  1017→      var(--sunpillar-clr-1) calc(var(--space) * 1),
+  1018→      var(--sunpillar-clr-2) calc(var(--space) * 2),
+  1019→      var(--sunpillar-clr-3) calc(var(--space) * 3),
+  1020→      var(--sunpillar-clr-4) calc(var(--space) * 4),
+  1021→      var(--sunpillar-clr-5) calc(var(--space) * 5),
+  1022→      var(--sunpillar-clr-6) calc(var(--space) * 6),
+  1023→      var(--sunpillar-clr-1) calc(var(--space) * 7)
+  1024→    ),
+  1025→    repeating-linear-gradient(
+  1026→      var(--angle),
+  1027→      #0e152e 0%,
+  1028→      hsl(180, 10%, 60%) 3.8%,
+  1029→      hsl(180, 29%, 66%) 4.5%,
+  1030→      hsl(180, 10%, 60%) 5.2%,
+  1031→      #0e152e 10%,
+  1032→      #0e152e 12%
+  1033→    ),
+  1034→    radial-gradient(
+  1035→      farthest-corner circle at var(--pointer-x) var(--pointer-y),
+  1036→      hsla(0, 0%, 0%, 0.1) 12%,
+  1037→      hsla(0, 0%, 0%, 0.15) 20%,
+  1038→      hsla(0, 0%, 0%, 0.25) 120%
+  1039→    );
+  1040→  background-position:
+  1041→    0 var(--background-y),
+  1042→    var(--background-x) var(--background-y),
+  1043→    center;
+  1044→  background-blend-mode: color, hard-light;
+  1045→  background-size:
+  1046→    500% 500%,
+  1047→    300% 300%,
+  1048→    200% 200%;
+  1049→  background-repeat: repeat;
+  1050→}
+  1051→
+  1052→.pc-shine::before,
+  1053→.pc-shine::after {
+  1054→  content: '';
+  1055→  background-position: center;
+  1056→  background-size: cover;
+  1057→  grid-area: 1/1;
+  1058→  opacity: 0;
+  1059→  transition: opacity 0.8s ease;
+  1060→}
+  1061→
+  1062→.pc-card:hover .pc-shine,
+  1063→.pc-card.active .pc-shine {
+  1064→  filter: brightness(0.85) contrast(1.5) saturate(0.5);
+  1065→  animation-play-state: paused;
+  1066→}
+  1067→
+  1068→.pc-card:hover .pc-shine::before,
+  1069→.pc-card.active .pc-shine::before,
+  1070→.pc-card:hover .pc-shine::after,
+  1071→.pc-card.active .pc-shine::after {
+  1072→  opacity: 1;
+  1073→}
+  1074→
+  1075→.pc-shine::before {
+  1076→  background-image:
+  1077→    linear-gradient(
+  1078→      45deg,
+  1079→      var(--sunpillar-4),
+  1080→      var(--sunpillar-5),
+  1081→      var(--sunpillar-6),
+  1082→      var(--sunpillar-1),
+  1083→      var(--sunpillar-2),
+  1084→      var(--sunpillar-3)
+  1085→    ),
+  1086→    radial-gradient(circle at var(--pointer-x) var(--pointer-y), hsl(0, 0%, 70%) 0%, hsla(0, 0%, 30%, 0.2) 90%),
+  1087→    var(--grain);
+  1088→  background-size:
+  1089→    250% 250%,
+  1090→    100% 100%,
+  1091→    220px 220px;
+  1092→  background-position:
+  1093→    var(--pointer-x) var(--pointer-y),
+  1094→    center,
+  1095→    calc(var(--pointer-x) * 0.01) calc(var(--pointer-y) * 0.01);
+  1096→  background-blend-mode: color-dodge;
+  1097→  filter: brightness(calc(2 - var(--pointer-from-center))) contrast(calc(var(--pointer-from-center) + 2))
+  1098→    saturate(calc(0.5 + var(--pointer-from-center)));
+  1099→  mix-blend-mode: luminosity;
+  1100→}
+  1101→
+  1102→.pc-shine::after {
+  1103→  background-position:
+  1104→    0 var(--background-y),
+  1105→    calc(var(--background-x) * 0.4) calc(var(--background-y) * 0.5),
+  1106→    center;
+  1107→  background-size:
+  1108→    200% 300%,
+  1109→    700% 700%,
+  1110→    100% 100%;
+  1111→  mix-blend-mode: difference;
+  1112→  filter: brightness(0.8) contrast(1.5);
+  1113→}
+  1114→
+  1115→.pc-glare {
+  1116→  transform: translate3d(0, 0, 1.1px);
+  1117→  overflow: hidden;
+  1118→  background-image: radial-gradient(
+  1119→    farthest-corner circle at var(--pointer-x) var(--pointer-y),
+  1120→    hsl(248, 25%, 80%) 12%,
+  1121→    hsla(207, 40%, 30%, 0.8) 90%
+  1122→  );
+  1123→  mix-blend-mode: overlay;
+  1124→  filter: brightness(0.8) contrast(1.2);
+  1125→  z-index: 4;
+  1126→}
+  1127→
+  1128→.pc-avatar-content {
+  1129→  mix-blend-mode: luminosity;
+  1130→  overflow: visible;
+  1131→  transform: translateZ(2);
+  1132→  backface-visibility: hidden;
+  1133→}
+  1134→
+  1135→.pc-avatar-content .avatar {
+  1136→  width: 100%;
+  1137→  position: absolute;
+  1138→  left: 50%;
+  1139→  transform-origin: 50% 100%;
+  1140→  transform: translateX(calc(-50% + (var(--pointer-from-left) - 0.5) * 6px)) translateZ(0)
+  1141→    scaleY(calc(1 + (var(--pointer-from-top) - 0.5) * 0.02)) scaleX(calc(1 + (var(--pointer-from-left) - 0.5) * 0.01));
+  1142→  bottom: -1px;
+  1143→  backface-visibility: hidden;
+  1144→  will-change: transform;
+  1145→  transition: transform 120ms ease-out;
+  1146→}
+  1147→
+  1148→.pc-avatar-content::before {
+  1149→  content: '';
+  1150→  position: absolute;
+  1151→  inset: 0;
+  1152→  z-index: 1;
+  1153→  backdrop-filter: none;
+  1154→  pointer-events: none;
+  1155→}
+  1156→
+  1157→.pc-user-info {
+  1158→  position: absolute;
+  1159→  --ui-inset: 20px;
+  1160→  --ui-radius-bias: 6px;
+  1161→  bottom: var(--ui-inset);
+  1162→  left: var(--ui-inset);
+  1163→  right: var(--ui-inset);
+  1164→  z-index: 2;
+  1165→  display: flex;
+  1166→  align-items: center;
+  1167→  justify-content: space-between;
+  1168→  background: rgba(255, 255, 255, 0.1);
+  1169→  backdrop-filter: blur(30px);
+  1170→  border: 1px solid rgba(255, 255, 255, 0.1);
+  1171→  border-radius: calc(max(0px, var(--card-radius) - var(--ui-inset) + var(--ui-radius-bias)));
+  1172→  padding: 12px 14px;
+  1173→  pointer-events: auto;
+  1174→}
+  1175→
+  1176→.pc-user-details {
+  1177→  display: flex;
+  1178→  align-items: center;
+  1179→  gap: 12px;
+  1180→}
+  1181→
+  1182→.pc-mini-avatar {
+  1183→  width: 48px;
+  1184→  height: 48px;
+  1185→  border-radius: 50%;
+  1186→  overflow: hidden;
+  1187→  border: 1px solid rgba(255, 255, 255, 0.1);
+  1188→  flex-shrink: 0;
+  1189→}
+  1190→
+  1191→.pc-mini-avatar img {
+  1192→  width: 100%;
+  1193→  height: 100%;
+  1194→  object-fit: cover;
+  1195→  border-radius: 50%;
+  1196→}
+  1197→
+  1198→.pc-user-text {
+  1199→  display: flex;
+  1200→  align-items: flex-start;
+  1201→  flex-direction: column;
+  1202→  gap: 6px;
+  1203→}
+  1204→
+  1205→.pc-handle {
+  1206→  font-size: 14px;
+  1207→  font-weight: 500;
+  1208→  color: rgba(255, 255, 255, 0.9);
+  1209→  line-height: 1;
+  1210→}
+  1211→
+  1212→.pc-status {
+  1213→  font-size: 14px;
+  1214→  color: rgba(255, 255, 255, 0.7);
+  1215→  line-height: 1;
+  1216→}
+  1217→
+  1218→.pc-contact-btn {
+  1219→  border: 1px solid rgba(255, 255, 255, 0.1);
+  1220→  border-radius: 8px;
+  1221→  padding: 12px 16px;
+  1222→  font-size: 12px;
+  1223→  font-weight: 600;
+  1224→  color: rgba(255, 255, 255, 0.9);
+  1225→  cursor: pointer;
+  1226→  transition: all 0.2s ease;
+  1227→  backdrop-filter: blur(10px);
+  1228→}
+  1229→
+  1230→.pc-contact-btn:hover {
+  1231→  border-color: rgba(255, 255, 255, 0.4);
+  1232→  transform: translateY(-1px);
+  1233→  transition: all 0.2s ease;
+  1234→}
+  1235→
+  1236→.pc-content:not(.pc-avatar-content) {
+  1237→  max-height: 100%;
+  1238→  overflow: hidden;
+  1239→  text-align: center;
+  1240→  position: relative;
+  1241→  transform: translate3d(
+  1242→    calc(var(--pointer-from-left) * -6px + 3px),
+  1243→    calc(var(--pointer-from-top) * -6px + 3px),
+  1244→    0.1px
+  1245→  );
+  1246→  z-index: 5;
+  1247→  mix-blend-mode: luminosity;
+  1248→}
+  1249→
+  1250→.pc-details {
+  1251→  width: 100%;
+  1252→  position: absolute;
+  1253→  top: 3em;
+  1254→  display: flex;
+  1255→  flex-direction: column;
+  1256→}
+  1257→
+  1258→.pc-details h3 {
+  1259→  font-weight: 600;
+  1260→  margin: 0;
+  1261→  font-size: min(5svh, 3em);
+  1262→  margin: 0;
+  1263→  background-image: linear-gradient(to bottom, #fff, #6f6fbe);
+  1264→  background-size: 1em 1.5em;
+  1265→  -webkit-text-fill-color: transparent;
+  1266→  background-clip: text;
+  1267→  -webkit-background-clip: text;
+  1268→}
+  1269→
+  1270→.pc-details p {
+  1271→  font-weight: 600;
+  1272→  position: relative;
+  1273→  top: -12px;
+  1274→  white-space: nowrap;
+  1275→  font-size: 16px;
+  1276→  margin: 0 auto;
+  1277→  width: min-content;
+  1278→  background-image: linear-gradient(to bottom, #fff, #4a4ac0);
+  1279→  background-size: 1em 1.5em;
+  1280→  -webkit-text-fill-color: transparent;
+  1281→  background-clip: text;
+  1282→  -webkit-background-clip: text;
+  1283→}
+  1284→
+  1285→@keyframes glow-bg {
+  1286→  0% {
+  1287→    --bgrotate: 0deg;
+  1288→  }
+  1289→
+  1290→  100% {
+  1291→    --bgrotate: 360deg;
+  1292→  }
+  1293→}
+  1294→
+  1295→@keyframes holo-bg {
+  1296→  0% {
+  1297→    background-position:
+  1298→      0 var(--background-y),
+  1299→      0 0,
+  1300→      center;
+  1301→  }
+  1302→
+  1303→  100% {
+  1304→    background-position:
+  1305→      0 var(--background-y),
+  1306→      90% 90%,
+  1307→      center;
+  1308→  }
+  1309→}
+  1310→
+  1311→@media (max-width: 768px) {
+  1312→  .pc-card {
+  1313→    height: 70svh;
+  1314→    max-height: 450px;
+  1315→  }
+  1316→
+  1317→  .pc-details {
+  1318→    top: 2em;
+  1319→  }
+  1320→
+  1321→  .pc-details h3 {
+  1322→    font-size: min(4svh, 2.5em);
+  1323→  }
+  1324→
+  1325→  .pc-details p {
+  1326→    font-size: 14px;
+  1327→  }
+  1328→
+  1329→  .pc-user-info {
+  1330→    --ui-inset: 15px;
+  1331→    padding: 10px 12px;
+  1332→  }
+  1333→
+  1334→  .pc-mini-avatar {
+  1335→    width: 28px;
+  1336→    height: 28px;
+  1337→  }
+  1338→
+  1339→  .pc-user-details {
+  1340→    gap: 10px;
+  1341→  }
+  1342→
+  1343→  .pc-handle {
+  1344→    font-size: 13px;
+  1345→  }
+  1346→
+  1347→  .pc-status {
+  1348→    font-size: 10px;
+  1349→  }
+  1350→
+  1351→  .pc-contact-btn {
+  1352→    padding: 6px 12px;
+  1353→    font-size: 11px;
+  1354→  }
+  1355→}
+  1356→
+  1357→@media (max-width: 480px) {
+  1358→  .pc-card {
+  1359→    height: 60svh;
+  1360→    max-height: 380px;
+  1361→  }
+  1362→
+  1363→  .pc-details {
+  1364→    top: 1.5em;
+  1365→  }
+  1366→
+  1367→  .pc-details h3 {
+  1368→    font-size: min(3.5svh, 2em);
+  1369→  }
+  1370→
+  1371→  .pc-details p {
+  1372→    font-size: 12px;
+  1373→    top: -8px;
+  1374→  }
+  1375→
+  1376→  .pc-user-info {
+  1377→    --ui-inset: 12px;
+  1378→    padding: 8px 10px;
+  1379→  }
+  1380→
+  1381→  .pc-mini-avatar {
+  1382→    width: 24px;
+  1383→    height: 24px;
+  1384→  }
+  1385→
+  1386→  .pc-user-details {
+  1387→    gap: 8px;
+  1388→  }
+  1389→
+  1390→  .pc-handle {
+  1391→    font-size: 12px;
+  1392→  }
+  1393→
+  1394→  .pc-status {
+  1395→    font-size: 9px;
+  1396→  }
+  1397→
+  1398→  .pc-contact-btn {
+  1399→    padding: 5px 10px;
+  1400→    font-size: 10px;
+  1401→    border-radius: 50px;
+  1402→  }
+  1403→}
+  1404→
+  1405→@media (max-width: 320px) {
+  1406→  .pc-card {
+  1407→    height: 55svh;
+  1408→    max-height: 320px;
+  1409→  }
+  1410→
+  1411→  .pc-details h3 {
+  1412→    font-size: min(3svh, 1.5em);
+  1413→  }
+  1414→
+  1415→  .pc-details p {
+  1416→    font-size: 11px;
+  1417→  }
+  1418→
+  1419→  .pc-user-info {
+  1420→    padding: 6px 8px;
+  1421→  }
+  1422→
+  1423→  .pc-mini-avatar {
+  1424→    width: 20px;
+  1425→    height: 20px;
+  1426→  }
+  1427→
+  1428→  .pc-user-details {
+  1429→    gap: 6px;
+  1430→  }
+  1431→
+  1432→  .pc-handle {
+  1433→    font-size: 11px;
+  1434→  }
+  1435→
+  1436→  .pc-status {
+  1437→    font-size: 8px;
+  1438→  }
+  1439→
+  1440→  .pc-contact-btn {
+  1441→    padding: 4px 8px;
+  1442→    font-size: 9px;
+  1443→    border-radius: 50px;
+  1444→  }
+  1445→}
+  1446→
+  1447→```
+  1448→
+  1449→### Integration Instructions
+  1450→1. Install any listed dependencies.
+  1451→2. Copy the component source into the appropriate directory in the project.
+  1452→3. Import the CSS file alongside the component.
+  1453→4. Import and render the component using the usage example above as a starting point.
+  1454→5. Adjust props as needed for the specific use case — refer to the props table for all available options.
+  1455→
+  1456→
+  1457→this is for my name and profile
