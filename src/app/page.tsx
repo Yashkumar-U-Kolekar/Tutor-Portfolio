@@ -711,10 +711,10 @@ function HeroSection() {
             <Lanyard
               position={[0, 0, 20]}
               gravity={[0, -40, 0]}
-              cardGlbUrl="/Tutor-Portfolio/lanyard/card.glb"
-              lanyardImageUrl="/Tutor-Portfolio/lanyard/lanyard.png"
-              frontImage="/Tutor-Portfolio/yash.jpg"
-              backImage="/Tutor-Portfolio/assets/card-back.png"
+              cardGlbUrl="/lanyard/card.glb"
+              lanyardImageUrl="/lanyard/lanyard.png"
+              frontImage="/yash.jpg"
+              backImage="/assets/card-back.png"
               imageFit="cover"
               lanyardWidth={1}
             />
