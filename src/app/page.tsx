@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useSpring, AnimatePresence, useTransform } from 'framer-motion';
 import {
   Phone,
   Mail,
@@ -33,7 +33,7 @@ const Lanyard = dynamic(() => import('@/components/lanyard/Lanyard'), {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        color: 'rgba(245,245,240,0.4)',
+        color: 'rgba(255,255,255,0.4)',
         fontFamily: 'var(--font-mono, monospace)',
         fontSize: '0.7rem',
         letterSpacing: '0.3em',
@@ -50,7 +50,6 @@ const RESUME = {
   firstName: 'Yashkumar',
   lastName: 'Kolekar',
   phone: '9742046509',
-  email: 'yashkumar.kolekar@gmail.com',
   location: 'Bengaluru, Karnataka',
   handle: 'yashkumar.kolekar',
   status: 'Available for Tutoring',
@@ -227,6 +226,11 @@ function CursorGlow() {
 
 // ===== Component: Background =====
 function BackgroundDecor() {
+  const { scrollYProgress } = useScroll();
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, 400]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, -300]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [0, 200]);
+
   return (
     <>
       <div
@@ -238,33 +242,36 @@ function BackgroundDecor() {
           pointerEvents: 'none',
         }}
       />
-      <div
+      <motion.div
         className="pf-orb"
         style={{
+          y: y1,
           width: 600,
           height: 600,
-          background: '#C9A961',
+          background: '#D4AF37',
           top: '-15%',
           left: '-10%',
         }}
       />
-      <div
+      <motion.div
         className="pf-orb"
         style={{
+          y: y2,
           width: 450,
           height: 450,
-          background: '#8B7355',
+          background: '#FFDF73',
           top: '45%',
           right: '-8%',
           animationDelay: '-4s',
         }}
       />
-      <div
+      <motion.div
         className="pf-orb"
         style={{
+          y: y3,
           width: 400,
           height: 400,
-          background: '#C9A961',
+          background: '#AA7C11',
           bottom: '-5%',
           left: '25%',
           animationDelay: '-8s',
@@ -304,7 +311,7 @@ function Nav() {
         backdropFilter: scrolled ? 'blur(20px)' : 'none',
         WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'none',
         borderBottom: scrolled
-          ? '1px solid rgba(245,245,240,0.06)'
+          ? '1px solid rgba(255,255,255,0.06)'
           : '1px solid transparent',
       }}
     >
@@ -472,9 +479,7 @@ function HeroSection() {
       style={{
         position: 'relative',
         minHeight: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        padding: '7rem 2rem 3rem',
+        padding: 'max(15vh, 8rem) 2rem 4rem',
         zIndex: 2,
       }}
     >
@@ -691,9 +696,12 @@ function HeroSection() {
           }}
         >
           <div
-            style={{
-              width: '100%',
-              height: '640px',
+              style={{
+                width: '100%',
+                height: '640px',
+                padding: '1rem',
+                borderRadius: 20,
+                background: 'linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.015))',
               position: 'relative',
               display: 'flex',
               alignItems: 'center',
@@ -703,10 +711,10 @@ function HeroSection() {
             <Lanyard
               position={[0, 0, 20]}
               gravity={[0, -40, 0]}
-              cardGlbUrl="/lanyard/card.glb"
-              lanyardImageUrl="/lanyard/lanyard.png"
-              frontImage="/assets/avatar.png"
-              backImage="/assets/card-back.png"
+              cardGlbUrl="/Tutor-Portfolio/lanyard/card.glb"
+              lanyardImageUrl="/Tutor-Portfolio/lanyard/lanyard.png"
+              frontImage="/Tutor-Portfolio/yash.jpg"
+              backImage="/Tutor-Portfolio/assets/card-back.png"
               imageFit="cover"
               lanyardWidth={1}
             />
@@ -1284,12 +1292,6 @@ function ContactSection() {
       href: `tel:+91${RESUME.phone}`,
     },
     {
-      icon: <Mail size={20} strokeWidth={1.4} />,
-      label: 'Email',
-      value: RESUME.email,
-      href: `mailto:${RESUME.email}`,
-    },
-    {
       icon: <MapPin size={20} strokeWidth={1.4} />,
       label: 'Location',
       value: RESUME.location,
@@ -1410,7 +1412,7 @@ function ContactSection() {
             borderRadius: 6,
             textAlign: 'center',
             background:
-              'linear-gradient(135deg, rgba(201,169,97,0.04), rgba(139,115,85,0.05))',
+              'linear-gradient(135deg, rgba(138,99,255,0.04), rgba(0,240,255,0.05))',
             position: 'relative',
             overflow: 'hidden',
           }}
@@ -1463,7 +1465,7 @@ function ContactSection() {
             Book a session today — personalized lesson plans, online or offline.
           </p>
           <a
-            href={`mailto:${RESUME.email}`}
+            href={`tel:+91${RESUME.phone}`}
             className="pf-btn pf-btn-primary"
             style={{ textDecoration: 'none' }}
           >
@@ -1564,7 +1566,8 @@ export default function Page() {
   }, []);
 
   return (
-    <main style={{ position: 'relative', minHeight: '100vh', overflowX: 'hidden' }}>
+    <main className="pf-page" style={{ position: 'relative', minHeight: '100vh', overflowX: 'hidden' }}>
+      <div className="pf-page-ambient" aria-hidden="true" />
       <BackgroundDecor />
       <CursorGlow />
       <ScrollProgress />

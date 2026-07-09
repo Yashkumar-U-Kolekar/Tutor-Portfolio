@@ -6,27 +6,27 @@
    ============================================ */
 
 :root {
-  /* Refined palette — warm-neutral black + champagne */
-  --pf-bg: #08080A;
-  --pf-bg-soft: #0E0E11;
-  --pf-bg-card: #111114;
-  --pf-fg: #F5F5F0;
-  --pf-fg-muted: rgba(245, 245, 240, 0.62);
-  --pf-fg-dim: rgba(245, 245, 240, 0.38);
-  --pf-fg-faint: rgba(245, 245, 240, 0.18);
+  /* Ultra-premium Obsidian & Metallic Gold */
+  --pf-bg: #050505;
+  --pf-bg-soft: #0A0A0A;
+  --pf-bg-card: #0F0F0F;
+  --pf-fg: #FDFCF0;
+  --pf-fg-muted: rgba(253, 252, 240, 0.65);
+  --pf-fg-dim: rgba(253, 252, 240, 0.40);
+  --pf-fg-faint: rgba(253, 252, 240, 0.15);
 
-  /* Champagne / warm gold accent (refined, not neon) */
-  --pf-accent: #C9A961;
-  --pf-accent-soft: rgba(201, 169, 97, 0.18);
-  --pf-accent-line: rgba(201, 169, 97, 0.32);
+  /* Metallic Gold Accent */
+  --pf-accent: #D4AF37;
+  --pf-accent-soft: rgba(212, 175, 55, 0.12);
+  --pf-accent-line: rgba(212, 175, 55, 0.25);
 
   /* Hairlines */
-  --pf-border: rgba(245, 245, 240, 0.07);
-  --pf-border-strong: rgba(245, 245, 240, 0.14);
+  --pf-border: rgba(255, 255, 255, 0.08);
+  --pf-border-strong: rgba(255, 255, 255, 0.16);
 
   /* Surfaces */
-  --pf-card: rgba(245, 245, 240, 0.025);
-  --pf-card-hover: rgba(245, 245, 240, 0.045);
+  --pf-card: rgba(255, 255, 255, 0.02);
+  --pf-card-hover: rgba(255, 255, 255, 0.04);
 
   /* Fonts */
   --pf-font-display: var(--font-display), 'Playfair Display', Georgia, 'Times New Roman', serif;
@@ -40,10 +40,11 @@
 
 html,
 body {
-  background: var(--pf-bg) !important;
+  background:
+    radial-gradient(circle at top, rgba(212, 175, 55, 0.08), transparent 35%),
+    radial-gradient(circle at 80% 15%, rgba(255, 223, 115, 0.05), transparent 28%),
+    linear-gradient(180deg, #050505 0%, #030303 48%, #050505 100%) !important;
   color: var(--pf-fg) !important;
-  scroll-behavior: smooth;
-  overscroll-behavior: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -53,8 +54,22 @@ body {
   font-family: var(--pf-font-body);
   font-feature-settings: 'ss01', 'cv11', 'cv02';
   letter-spacing: -0.011em;
-  overflow-x: hidden;
   cursor: auto;
+}
+
+.pf-page {
+  position: relative;
+  isolation: isolate;
+}
+
+.pf-page-ambient {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.025), transparent 30%),
+    radial-gradient(circle at 50% 100%, rgba(212, 175, 55, 0.03), transparent 26%);
 }
 
 /* ===== Selection ===== */
@@ -72,11 +87,11 @@ body {
   background: var(--pf-bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(201, 169, 97, 0.25);
+  background: rgba(212, 175, 55, 0.25);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(201, 169, 97, 0.5);
+  background: rgba(212, 175, 55, 0.5);
 }
 
 /* ===== Display font (serif) ===== */
@@ -99,14 +114,13 @@ body {
   letter-spacing: 0.04em;
 }
 
-/* ===== Refined gradient text — subtle champagne shimmer ===== */
 .pf-gradient-text {
   background: linear-gradient(
     135deg,
-    #E8D5A8 0%,
-    #C9A961 35%,
-    #B8923F 65%,
-    #E8D5A8 100%
+    #D4AF37 0%,
+    #FFDF73 35%,
+    #AA7C11 65%,
+    #D4AF37 100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
@@ -123,19 +137,23 @@ body {
 /* Soft glow for hero name only */
 .pf-glow-text {
   text-shadow:
-    0 0 60px rgba(201, 169, 97, 0.15),
-    0 0 120px rgba(201, 169, 97, 0.08);
+    0 0 60px rgba(212, 175, 55, 0.15),
+    0 0 120px rgba(212, 175, 55, 0.08);
 }
 
 /* ===== Refined glass card — premium ===== */
 .pf-glass {
-  background: var(--pf-card);
-  border: 1px solid var(--pf-border);
-  backdrop-filter: blur(20px) saturate(1.05);
-  -webkit-backdrop-filter: blur(20px) saturate(1.05);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(14px) saturate(1.04);
+  -webkit-backdrop-filter: blur(14px) saturate(1.04);
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
+  box-shadow:
+    0 22px 48px -28px rgba(0, 0, 0, 0.72),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  border-radius: 20px;
 }
 
 .pf-glass::after {
@@ -145,7 +163,7 @@ body {
   border-radius: inherit;
   background: radial-gradient(
     600px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(201, 169, 97, 0.05),
+    rgba(212, 175, 55, 0.05),
     transparent 40%
   );
   opacity: 0;
@@ -154,12 +172,12 @@ body {
 }
 
 .pf-glass:hover {
-  background: var(--pf-card-hover);
-  border-color: var(--pf-border-strong);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015));
+  border-color: rgba(212, 175, 55, 0.22);
   transform: translateY(-3px);
   box-shadow:
-    0 30px 60px -20px rgba(0, 0, 0, 0.6),
-    0 0 0 1px rgba(201, 169, 97, 0.08);
+    0 36px 72px -28px rgba(0, 0, 0, 0.72),
+    0 0 0 1px rgba(212, 175, 55, 0.1);
 }
 
 .pf-glass:hover::after {
@@ -188,8 +206,8 @@ body {
 /* ===== Background — subtle vignette + grain ===== */
 .pf-grid-bg {
   background-image:
-    linear-gradient(rgba(245, 245, 240, 0.018) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(245, 245, 240, 0.018) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
   background-size: 80px 80px;
   mask-image: radial-gradient(ellipse 100% 80% at center top, #000 0%, transparent 80%);
   -webkit-mask-image: radial-gradient(ellipse 100% 80% at center top, #000 0%, transparent 80%);
@@ -199,9 +217,10 @@ body {
 .pf-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.18;
+  filter: blur(70px);
+  opacity: 0.12;
   pointer-events: none;
+  will-change: transform;
   animation: pf-float 18s ease-in-out infinite;
 }
 
@@ -225,6 +244,7 @@ body {
   letter-spacing: -0.025em;
   line-height: 1.05;
   color: var(--pf-fg);
+  text-wrap: balance;
 }
 
 .pf-section-eyebrow {
@@ -250,39 +270,45 @@ body {
 /* ===== Reveal on scroll ===== */
 .pf-reveal {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(40px) scale(0.98);
+  filter: blur(12px);
   transition:
-    opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .pf-reveal.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
+  filter: blur(0px);
 }
 
 /* ===== Stagger children ===== */
 .pf-stagger > * {
   opacity: 0;
   transform: translateY(16px);
+  filter: blur(8px);
   transition:
     opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.pf-stagger.is-visible > * {
+.is-visible .pf-stagger > *, .pf-stagger.is-visible > * {
   opacity: 1;
   transform: translateY(0);
+  filter: blur(0px);
 }
 
-.pf-stagger.is-visible > *:nth-child(1) { transition-delay: 0.05s; }
-.pf-stagger.is-visible > *:nth-child(2) { transition-delay: 0.12s; }
-.pf-stagger.is-visible > *:nth-child(3) { transition-delay: 0.19s; }
-.pf-stagger.is-visible > *:nth-child(4) { transition-delay: 0.26s; }
-.pf-stagger.is-visible > *:nth-child(5) { transition-delay: 0.33s; }
-.pf-stagger.is-visible > *:nth-child(6) { transition-delay: 0.40s; }
-.pf-stagger.is-visible > *:nth-child(7) { transition-delay: 0.47s; }
-.pf-stagger.is-visible > *:nth-child(8) { transition-delay: 0.54s; }
+.is-visible .pf-stagger > *:nth-child(1), .pf-stagger.is-visible > *:nth-child(1) { transition-delay: 0.05s; }
+.is-visible .pf-stagger > *:nth-child(2), .pf-stagger.is-visible > *:nth-child(2) { transition-delay: 0.12s; }
+.is-visible .pf-stagger > *:nth-child(3), .pf-stagger.is-visible > *:nth-child(3) { transition-delay: 0.19s; }
+.is-visible .pf-stagger > *:nth-child(4), .pf-stagger.is-visible > *:nth-child(4) { transition-delay: 0.26s; }
+.is-visible .pf-stagger > *:nth-child(5), .pf-stagger.is-visible > *:nth-child(5) { transition-delay: 0.33s; }
+.is-visible .pf-stagger > *:nth-child(6), .pf-stagger.is-visible > *:nth-child(6) { transition-delay: 0.40s; }
+.is-visible .pf-stagger > *:nth-child(7), .pf-stagger.is-visible > *:nth-child(7) { transition-delay: 0.47s; }
+.is-visible .pf-stagger > *:nth-child(8), .pf-stagger.is-visible > *:nth-child(8) { transition-delay: 0.54s; }
 
 /* ===== Skill chip — refined ===== */
 .pf-chip {
@@ -290,9 +316,9 @@ body {
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  border-radius: 4px;
-  background: rgba(245, 245, 240, 0.025);
-  border: 1px solid var(--pf-border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   font-size: 0.8rem;
   font-weight: 400;
   color: var(--pf-fg-muted);
@@ -312,7 +338,7 @@ body {
   align-items: center;
   gap: 0.6rem;
   padding: 0.85rem 1.65rem;
-  border-radius: 2px;
+  border-radius: 999px;
   font-weight: 500;
   font-size: 0.9rem;
   letter-spacing: 0.01em;
@@ -326,7 +352,7 @@ body {
 .pf-btn-primary {
   background: var(--pf-fg);
   color: var(--pf-bg);
-  border: 1px solid var(--pf-fg);
+  border: 1px solid rgba(255, 255, 255, 0.92);
 }
 
 .pf-btn-primary:hover {
@@ -334,12 +360,12 @@ body {
   color: var(--pf-bg);
   border-color: var(--pf-accent);
   transform: translateY(-2px);
-  box-shadow: 0 20px 40px -15px rgba(201, 169, 97, 0.35);
+  box-shadow: 0 20px 40px -15px rgba(138, 99, 255, 0.35);
 }
 
 .pf-btn-ghost {
   background: transparent;
-  border: 1px solid var(--pf-border-strong);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   color: var(--pf-fg);
 }
 
@@ -352,13 +378,13 @@ body {
 /* ===== Cursor glow — much subtler ===== */
 .pf-cursor-glow {
   position: fixed;
-  width: 600px;
-  height: 600px;
+  width: 420px;
+  height: 420px;
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(201, 169, 97, 0.04) 0%,
-    rgba(201, 169, 97, 0.02) 30%,
+    rgba(138, 99, 255, 0.04) 0%,
+    rgba(138, 99, 255, 0.02) 30%,
     transparent 70%
   );
   pointer-events: none;
@@ -366,6 +392,7 @@ body {
   transform: translate(-50%, -50%);
   transition: opacity 0.4s ease;
   mix-blend-mode: screen;
+  will-change: transform;
 }
 
 /* ===== Scroll progress — refined ===== */
@@ -379,6 +406,7 @@ body {
   transform-origin: 0% 50%;
   z-index: 100;
   opacity: 0.85;
+  will-change: transform;
 }
 
 /* ===== Pulse dot — refined ===== */
@@ -484,7 +512,7 @@ body {
 .pf-subject-icon {
   width: 52px;
   height: 52px;
-  border-radius: 10px;
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -560,6 +588,17 @@ body {
   }
   .pf-grid-bg {
     background-size: 50px 50px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pf-orb,
+  .pf-pulse-dot::before,
+  .pf-gradient-text,
+  .pf-lanyard-hint,
+  .pf-cursor-glow {
+    animation: none !important;
+    transition: none !important;
   }
 }
 

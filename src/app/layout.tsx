@@ -53,6 +53,8 @@ export const metadata: Metadata = {
   },
 };
 
+import SmoothScroll from "@/components/SmoothScroll";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -61,10 +63,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} ${inter.variable} antialiased bg-background text-foreground overflow-x-hidden`}
-        style={{ background: "#08080A", color: "#F5F5F0" }}
+        className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} ${inter.variable} antialiased bg-background text-foreground`}
+        style={{ background: "#050505", color: "#FDFCF0" }}
       >
-        {children}
+        <SmoothScroll>
+          {children}
+        </SmoothScroll>
         <Toaster />
       </body>
     </html>
