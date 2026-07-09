@@ -1,8 +1,4 @@
 import type { NextConfig } from "next";
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-
-const rootDir = dirname(fileURLToPath(new URL(".", import.meta.url)));
 
 const nextConfig: NextConfig = {
   output: "export",
@@ -19,9 +15,6 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
   reactStrictMode: false,
-  turbopack: {
-    root: rootDir,
-  },
 };
 
 export default nextConfig;
